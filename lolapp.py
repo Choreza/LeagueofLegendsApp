@@ -19,6 +19,6 @@ def hola(name):
     return render_template("test.html",data=data)
 
 @application.route("/handle_data",methods=['POST'])
-def handler():
+def handle_data():
     projectpath = request.form['projectFilepath']
     print projectpath
