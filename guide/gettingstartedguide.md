@@ -1,7 +1,7 @@
 # Getting Started Guide
 
 ## 1. Login to the server.
-Make sure you have your login info from the following [sheet](). Now with your credentials open a new terminal and write:
+Make sure you have your login info from the following [sheet](https://docs.google.com/spreadsheets/d/1jaO4wKREauvJv2t1zXtVZVfQBuz0PbJpl1yyv3FgEnA/edit?usp=sharing). Now with your credentials open a new terminal and write:
 
     ssh -l username -p 207 cc3201.dcc.uchile.cl
     
