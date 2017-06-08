@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
@@ -18,3 +18,7 @@ def hola(name):
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html",data=data)
 
+@application.route("/handle_data",methods=['POST'])
+def handler():
+    projectpath = request.form['projectFilepath']
+    print projectpath
