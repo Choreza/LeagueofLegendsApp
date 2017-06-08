@@ -21,4 +21,4 @@ def hola(name):
 @application.route("/handle_data",methods=['POST'])
 def handle_data():
     projectpath = request.form['projectFilepath']
-    print projectpath
+    return hola(projectpath)
