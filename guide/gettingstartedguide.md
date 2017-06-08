@@ -41,4 +41,4 @@ Once you finish something, you can test your modifications by writting:
 
       uwsgi --ini lolapp.ini
       
-And then go to [here](www.cc3201.dcc.uchile.cl/grupo07/).
+And then go to [here](http://cc3201.dcc.uchile.cl/grupo07/).
