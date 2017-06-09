@@ -18,7 +18,7 @@ def hola(name):
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html",data=data)
 
-@application.route("/handle_data",methods=['POST'])
+@application.route("/handle_data",methods=['POST','GET'])
 def handle_data():
     projectpath = request.form['projectFilepath']
-    return hola(projectpath)
+    return redirect(url_for("hola",name = projectpath))
