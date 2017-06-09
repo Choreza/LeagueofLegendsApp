@@ -18,6 +18,10 @@ def hola(name):
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html",data=data)
 
-@application.route("/handle_data/",methods=['GET','POST'])
+@application.route("grupo07/handle_data/",methods=['GET','POST'])
 def handle_data():
-    return "<h1>Hola</h1>"
+    name = request.form['projectFilepath']
+    if request.method == "GET":
+        return render_template("request1.html")
+    else:
+        return redirect(url_for("hola", name = name))
