@@ -29,7 +29,7 @@ class SQLWrapper:
             except:
                 print "cago rowcount"
             self.numpages = self.cur.rowcount
-            print "rows: "+ self.numpages
+            print "rows: "+ str(self.numpages)
         except Exception,e:
             print str(e)
             print "Can't execute query"
