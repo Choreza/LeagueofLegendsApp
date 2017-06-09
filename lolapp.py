@@ -20,7 +20,7 @@ def hola(name):
 
 @application.route("/handle_data",methods=['POST'])
 def handle_data():
-    projectpath = request.form['projectFilepath']
+    name = request.form['projectFilepath']
     SQL.query1(name)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
