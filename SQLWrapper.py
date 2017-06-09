@@ -16,15 +16,22 @@ class SQLWrapper:
 
     def query1(self,data):
         try:
-	    try:
-	    	self.cur.fetchall()
-	    except:
-		pass
-            self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
-            self.numpages = (self.cur.fetchone()[0])/100 + 1
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            #self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
+            #self.numpages = (self.cur.fetchone()[0])/100 + 1
             self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
             self.colnames = [desc[0] for desc in self.cur.description]
-        except:
+            try:
+                assert isinstance(self.cur.rowcount, int)
+            except:
+                print "cago rowcount"
+            self.numpages = self.cur.rowcount
+            print "rows: "+ str(self.numpages)
+        except Exception,e:
+            print str(e)
             print "Can't execute query"
 
     #fetch los siguientes 100 resultados
