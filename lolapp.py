@@ -20,6 +20,7 @@ def hola(name):
 
 @application.route("/handle_data",methods=['GET','POST'])
 def handle_data():
+    print "CACACA"
     name = request.form['projectFilepath']
     print name
     SQL.query1(name)
