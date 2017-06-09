@@ -20,10 +20,12 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
-            self.numpages = (self.cur.fetchone()[0])/100 + 1
+            #self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
+            #self.numpages = (self.cur.fetchone()[0])/100 + 1
             self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
             self.colnames = [desc[0] for desc in self.cur.description]
+            self.numpages = self.cur.rowcount
+            print "rows: "+ self.numpages
         except:
             print "Can't execute query"
 
