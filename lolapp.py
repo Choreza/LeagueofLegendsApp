@@ -18,7 +18,10 @@ def hola(name):
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html",data=data)
 
-@application.route("/handle_data",methods=['POST','GET'])
+@application.route("/handle_data",methods=['GET','POST'])
 def handle_data():
     projectpath = request.form['projectFilepath']
-    return redirect(url_for("hola",name = projectpath))
+    SQL.query1(name)
+    data = parser.tableheader(SQL.colnames)
+    data += parser.tableBody(SQL.fetch())
+    return render_template("test.html",data = data)
