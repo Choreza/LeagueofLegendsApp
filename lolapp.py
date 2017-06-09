@@ -20,7 +20,7 @@ def hola(name):
     return render_template("test.html", data=data)
 
 
-@application.route("/handle_data", methods=['GET', 'POST'])
+@application.route("/grupo07/handle_data", methods=['GET','POST'])
 def handle_data():
     print request.method
     if request.method == "GET":
