@@ -18,7 +18,7 @@ def hola(name):
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html",data=data)
 
-@application.route("/grupo07/handle_data/",methods=['GET','POST'])
+@application.route("/grupo07/handle_data",methods=['GET','POST'])
 def handle_data():
     name = request.form['projectFilepath']
     print request.method
