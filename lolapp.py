@@ -23,5 +23,5 @@ def handle_data():
     name = request.form['projectFilepath']
     if request.method == "GET":
         return render_template("request1.html")
-    else
+    else:
         return redirect(url_for("hola", name = name))
