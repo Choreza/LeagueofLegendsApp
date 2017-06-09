@@ -26,4 +26,4 @@ def handle_data():
     if request.method == "GET":
         return render_template("request1.html")
     else:
-        return "<h1>Hi"+str(request.form['projectFilepath']+"</h1>"
+        return "<h1>Hi"+str(request.form['projectFilepath'])+"</h1>"
