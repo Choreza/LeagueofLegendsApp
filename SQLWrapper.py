@@ -31,6 +31,8 @@ class SQLWrapper:
             self.numpages = self.cur.rowcount
             print "rows: "+ self.numpages
         except:
+            e = sys.exc_info()[0]
+            print e
             print "Can't execute query"
 
     #fetch los siguientes 100 resultados
