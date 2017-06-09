@@ -5,7 +5,7 @@ from SQLWrapper import SQLWrapper
 parser = Parser()
 SQL = SQLWrapper()
 application = Flask(__name__)
-
+home = "http://cc3201.dcc.uchile.cl/grupo07"
 
 @application.route("/")
 def hello():
@@ -26,4 +26,4 @@ def handle_data():
     if request.method == "GET":
         return render_template("request1.html")
     else:
-        return "<h1>Hi"+str(request.form['projectFilepath'])+"</h1>"
+        return redirect(home+str(request.form['projectFilepath']))
