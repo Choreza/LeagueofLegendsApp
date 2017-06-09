@@ -20,7 +20,7 @@ def hola(name):
     return render_template("test.html", data=data)
 
 
-@application.route("/handle_data", methods=['GET', 'POST'])
+@application.route("/handle_data")
 def handle_data():
     name = request.form['projectFilepath']
     print request.method
