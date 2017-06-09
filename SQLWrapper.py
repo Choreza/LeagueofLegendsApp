@@ -16,10 +16,10 @@ class SQLWrapper:
 
     def query1(self,data):
         try:
-	    try:
-	    	self.cur.fetchall()
-	    except:
-		pass
+            try:
+                self.cur.fetchall()
+            except:
+                pass
             self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
             self.numpages = (self.cur.fetchone()[0])/100 + 1
             self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
