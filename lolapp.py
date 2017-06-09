@@ -20,8 +20,4 @@ def hola(name):
 
 @application.route("/handle_data/",methods=['GET','POST'])
 def handle_data():
-    name = request.form['projectFilepath']
-    if request.method == "GET":
-        return render_template("request1.html")
-    else:
-        return redirect(url_for("hola", name = name))
+    return "<h1>Hola</h1>"
