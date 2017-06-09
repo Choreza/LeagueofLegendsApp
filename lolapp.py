@@ -20,10 +20,6 @@ def hola(name):
     return render_template("test.html", data=data)
 
 
-@application.route("/handle_data", methods=['GET', 'POST'])
+@application.route("/handle_data", methods=['POST'])
 def handle_data():
-    print request.method
-    if request.method == "GET":
-        return render_template("request1.html")
-    else:
-        return redirect(home+"/test/"+str(request.form['projectFilepath']))
+    return redirect(home+"/test/"+str(request.form['projectFilepath']))
