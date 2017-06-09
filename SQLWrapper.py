@@ -24,7 +24,10 @@ class SQLWrapper:
             #self.numpages = (self.cur.fetchone()[0])/100 + 1
             self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
             self.colnames = [desc[0] for desc in self.cur.description]
-            assert isinstance(self.cur.rowcount, int)
+            try:
+                assert isinstance(self.cur.rowcount, int)
+            except:
+                print "cago rowcount"
             self.numpages = self.cur.rowcount
             print "rows: "+ self.numpages
         except:
