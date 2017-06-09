@@ -20,10 +20,8 @@ def hola(name):
 
 @application.route("/handle_data",methods=['GET','POST'])
 def handle_data():
-    print "CACACA"
     name = request.form['projectFilepath']
-    print name
-    SQL.query1(name)
-    data = parser.tableheader(SQL.colnames)
-    data += parser.tableBody(SQL.fetch())
-    return render_template("test.html",data = data)
+    if request.method == "GET":
+        return render_template("request1.html")
+    else
+        return redirect(url_for("hola", name = name))
