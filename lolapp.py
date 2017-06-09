@@ -22,9 +22,4 @@ def hola(name):
 
 @application.route("/handle_data")
 def handle_data():
-    name = request.form['projectFilepath']
-    print request.method
-    if request.method == "GET":
-        return render_template("request1.html")
-    else:
-        return "<h1>It works!</h1>"
+    return "<h1>It works!</h1>"
