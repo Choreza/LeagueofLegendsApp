@@ -21,6 +21,7 @@ def hola(name):
 @application.route("/grupo07/handle_data/",methods=['GET','POST'])
 def handle_data():
     name = request.form['projectFilepath']
+    print request.method
     if request.method == "GET":
         return render_template("request1.html")
     else:
