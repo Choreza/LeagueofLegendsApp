@@ -26,4 +26,4 @@ def handle_data():
     if request.method == "GET":
         return render_template("request1.html")
     else:
-        return redirect(home+str(request.form['projectFilepath']))
+        return redirect(home+"/test/"+str(request.form['projectFilepath']))
