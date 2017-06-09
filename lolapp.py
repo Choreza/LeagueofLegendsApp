@@ -27,4 +27,4 @@ def handle_data():
     if request.method == "GET":
         return render_template("request1.html")
     else:
-        return hola(name)
+        return "<h1>It works!</h1>"
