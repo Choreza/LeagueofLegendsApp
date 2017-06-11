@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_bootstrap import Bootstrap
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
 parser = Parser()
-SQL = SQLWrapper()
 application = Flask(__name__)
 home = "http://cc3201.dcc.uchile.cl/grupo07"
 
