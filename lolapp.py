@@ -31,3 +31,11 @@ def about_page():
 def contact_page():
 	return render_template("contact.html")	
 
+@application.rout("/work")
+def work():
+    return render_template("work.html")
+
+
+@application.rout("/work01")
+def work():
+    return render_template("work01.html")
