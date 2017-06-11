@@ -34,4 +34,3 @@ def about_page():
 def contact_page():
 	return render_template("contact.html")	
 
-application.wsgi_app = DispatcherMiddleware(simple, {'/var/www/lolapp': application.wsgi_app})
