@@ -32,10 +32,10 @@ def contact_page():
 	return render_template("contact.html")	
 
 @application.rout("/work")
-def work():
+def work_page():
     return render_template("work.html")
 
 
 @application.rout("/work01")
-def work():
+def work01_page():
     return render_template("work01.html")
