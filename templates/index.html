@@ -15,11 +15,11 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/css/main.css')}}" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
+    <script src="{{url_for('static', filename='assets/js/hover.zoom.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/hover.zoom.conf.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -66,7 +66,7 @@
 	<div class="container pt">
 		<div class="row mt centered">
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/campeones.png" alt="" /></a>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="{{url_for('static', filename='assets/img/portfolio/campeones.png')}}" alt="" /></a>
 				<p>Busca por Campeón</p>
 			</div>
 			<div class="col-lg-4">
@@ -74,21 +74,21 @@
 				<p>Busca por Equipos</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/season.png" alt="" /></a>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="{{url_for('static', filename='assets/img/portfolio/season.png')}}" alt="" /></a>
 				<p>Busca por Season</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/port04.jpg" alt="" /></a>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="{{url_for('static', filename='assets/img/portfolio/port04.jpg')}}" alt="" /></a>
 				<p>Busca por Invocador</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/port05.jpg" alt="" /></a>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="{{url_for('static', filename='assets/img/portfolio/port05.jpg')}}" alt="" /></a>
 				<p>Busca por Fecha</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/port06.jpg" alt="" /></a>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="{{url_for('static', filename='assets/img/portfolio/port06.jpg')}}" alt="" /></a>
 				<p>HOLA</p>
 			</div>
 		</div><!-- /row -->
