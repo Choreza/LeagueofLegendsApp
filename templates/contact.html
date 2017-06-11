@@ -11,14 +11,14 @@
     <title>No quiero ser un feeder </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">	
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'css/main.css')}}" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.conf.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -119,6 +119,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
   </body>
 </html>
