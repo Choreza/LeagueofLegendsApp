@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_bootstrap import Bootstrap
+from werkzeug.serving import run_simple
+from werkzeug.wsgi import DispatcherMiddleware
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
@@ -31,4 +32,6 @@ def about_page():
 
 @application.route("/contact")
 def contact_page():
-	return render_template("contact.html")
+	return render_template("contact.html")	
+
+application.wsgi_app = DispatcherMiddleware(simple, {'/var/www/lolapp': application.wsgi_app})
