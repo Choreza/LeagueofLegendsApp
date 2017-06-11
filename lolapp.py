@@ -1,12 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
-from werkzeug.serving import run_simple
-from werkzeug.wsgi import DispatcherMiddleware
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
 parser = Parser()
 application = Flask(__name__)
-application.config['APPLICATION_ROOT'] = 'var/www/lolapp'
 home = "http://cc3201.dcc.uchile.cl/grupo07"
 
 @application.route("/")
