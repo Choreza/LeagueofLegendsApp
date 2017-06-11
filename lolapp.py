@@ -9,7 +9,7 @@ home = "http://cc3201.dcc.uchile.cl/grupo07"
 
 @application.route("/")
 def hello():
-    return render_template("index.html")
+    return url_for("index.html")
 
 
 @application.route("/test/<name>")
