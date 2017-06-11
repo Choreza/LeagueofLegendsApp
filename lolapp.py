@@ -3,13 +3,12 @@ from parser import Parser
 from SQLWrapper import SQLWrapper
 
 parser = Parser()
-SQL = SQLWrapper()
 application = Flask(__name__)
 home = "http://cc3201.dcc.uchile.cl/grupo07"
 
 @application.route("/")
 def hello():
-    return render_template("request1.html")
+    return render_template("index.html")
 
 
 @application.route("/test/<name>")
@@ -23,3 +22,12 @@ def hola(name):
 @application.route("/handle_data", methods=['POST'])
 def handle_data():
     return redirect(home+"/test/"+str(request.form['projectFilepath']))
+
+@application.route("/about")
+def about_page():
+	return render_template("about.html")
+
+@application.route("/contact")
+def contact_page():
+	return render_template("contact.html")	
+
