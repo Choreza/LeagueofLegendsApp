@@ -5,6 +5,7 @@ from SQLWrapper import SQLWrapper
 
 parser = Parser()
 application = Flask(__name__)
+application.config['APPLICATION_ROOT'] = 'var/www/lolapp'
 home = "http://cc3201.dcc.uchile.cl/grupo07"
 
 @application.route("/")
