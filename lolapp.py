@@ -23,3 +23,11 @@ def hola(name):
 @application.route("/handle_data", methods=['POST'])
 def handle_data():
     return redirect(home+"/test/"+str(request.form['projectFilepath']))
+
+@application.route("/about")
+def about_page():
+	return render_template("about.html")
+
+@application.route("/contact")
+def contact_page():
+	return render_template("contact.html")
