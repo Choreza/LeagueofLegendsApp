@@ -3,6 +3,7 @@ from parser import Parser
 from SQLWrapper import SQLWrapper
 
 parser = Parser()
+SQL = SQLWrapper()
 application = Flask(__name__)
 home = "http://cc3201.dcc.uchile.cl/grupo07"
 
@@ -36,6 +37,6 @@ def work_page():
     return render_template("work.html")
 
 
-@application.rout("/work01")
+@application.route("/work01")
 def work01_page():
     return render_template("work01.html")
