@@ -31,7 +31,7 @@ def about_page():
 def contact_page():
 	return render_template("contact.html")	
 
-@application.rout("/work")
+@application.route("/work")
 def work_page():
     return render_template("work.html")
 
