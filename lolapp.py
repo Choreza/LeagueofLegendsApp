@@ -24,7 +24,7 @@ def hola(name):
         print data
         print str(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
-    return render_template("test.html", data=data)
+    return render_template("test.html", titulo = name, data=data)
 
 
 @application.route("/handle_data", methods=['POST'])
