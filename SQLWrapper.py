@@ -46,4 +46,8 @@ class SQLWrapper:
             print "Can't execute query"
     #fetch los siguientes 100 resultados
     def fetch(self):
-        return self.cur.fetchmany(100)
+        try:
+            return self.cur.fetchmany(100)
+        except Exception,e:
+            print str(e)
+            print self.cur.query
