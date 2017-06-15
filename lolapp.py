@@ -15,7 +15,7 @@ def hello():
 
 @application.route("/test/<name>")
 def hola(name):
-    name = str(name).strip().lower().capitalize()
+    name = name.capitalize()
     if DEBUG:
         print name
     SQL.queryChampion(name)
@@ -29,9 +29,10 @@ def hola(name):
 
 @application.route("/handle_data", methods=['POST'])
 def handle_data():
+    name = str(request.form['projectFilepath']).strip().lower()
     if DEBUG:
-        print str(request.form['projectFilepath'])
-    return redirect(url_for("hola",name = str(request.form['projectFilepath'])))
+        print name
+    return redirect(url_for("hola",name = name ))
 
 @application.route("/about")
 def about_page():
