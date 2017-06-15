@@ -22,6 +22,7 @@ def hola(name):
     data = parser.tableheader(SQL.colnames)
     if DEBUG:
         print data
+        print str(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html", data=data)
 
