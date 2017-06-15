@@ -52,7 +52,7 @@
 	<!-- +++++ Consulta Section +++++ -->
 	
 	<div class="container pt">
-        <form method = "post" action = {{ url_for("handle_data") }}>
+        <form class = "form-inline" method = "post" action = {{ url_for("handle_data") }}>
             <div class="form-group">
                 <input class = "form-control" type="text" name="projectFilepath">
                 <button type="submit" class = "btn btn-default">Submit</button>
