@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
+DEBUG = True
 parser = Parser()
 SQL = SQLWrapper()
 application = Flask(__name__)
@@ -15,9 +16,12 @@ def hello():
 @application.route("/test/<name>")
 def hola(name):
     name = str(name).strip().lower().capitalize()
-    print name
+    if DEBUG:
+        print name
     SQL.queryChampion(name)
     data = parser.tableheader(SQL.colnames)
+    if DEBUG:
+        print data
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html", data=data)
 
