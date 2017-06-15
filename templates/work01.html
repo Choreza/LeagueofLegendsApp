@@ -52,9 +52,11 @@
 	<!-- +++++ Consulta Section +++++ -->
 	
 	<div class="container pt">
-        <form action = "http://cc3201.dcc.uchile.cl/grupo07/handle_data" method="post">
-            <input type="text" name="projectFilepath">
-            <input type="submit" value = "Go">
+        <form method = "post" action = {{ url_for("handle_data") }}>
+            <div class="form-group">
+                <input class = "form-control" type="text" name="projectFilepath">
+                <button type="submit" class = "btn btn-default">Submit</button>
+            </div>
         </form>
 	</div><!-- /container -->
 	
