@@ -29,7 +29,7 @@ def hola(name):
 
 @application.route("/handle_data", methods=['POST'])
 def handle_data():
-    return redirect(home+"/test/"+str(request.form['projectFilepath']))
+    return redirect(url_for(hola,name = str(request.form['projectFilepath'])))
 
 @application.route("/about")
 def about_page():
