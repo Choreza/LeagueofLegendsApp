@@ -34,6 +34,16 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryChampion(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT foo.season,foo.wins,bar.total, CAST(foo.wins AS double precision) / bar.total AS winrate FROM (SELECT season,COUNT(season) AS wins FROM lol.leagueoflegends WHERE ((%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp) AND rresult IS true) OR ((%s) IN (bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) ANS bresult IS true) GROUP BY season) foo, (SELECT season,COUNT(season) AS total FROM lol.leagueoflegends WHERE (%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp,bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) GROUP BY (season) ) bar WHERE foo.season = bar.season", (data,data,data))
+        except Exception,e:
+            print str(e)
+            print "Can't execute query"
     #fetch los siguientes 100 resultados
     def fetch(self):
         return self.cur.fetchmany(100)

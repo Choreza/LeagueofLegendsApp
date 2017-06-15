@@ -14,7 +14,9 @@ def hello():
 
 @application.route("/test/<name>")
 def hola(name):
-    SQL.query1(name)
+    name = str(name).strip().lower().capitalize()
+    print name
+    SQL.queryChampion(name)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
     return render_template("test.html", data=data)
