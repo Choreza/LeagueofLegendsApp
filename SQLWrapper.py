@@ -46,6 +46,30 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryChampion(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT foo.season,foo.wins,bar.total, round((CAST(foo.wins AS NUMERIC )*100 / bar.total),2) AS winrate FROM (SELECT season,COUNT(season) AS wins FROM lol.leagueoflegends WHERE ((%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp) AND rresult IS true) OR ((%s) IN (bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) AND bresult IS true) GROUP BY season) foo, (SELECT season,COUNT(season) AS total FROM lol.leagueoflegends WHERE (%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp,bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) GROUP BY (season) ) bar WHERE foo.season = bar.season", (data,data,data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception,e:
+            print str(e)
+            print "Can't execute query"
+
+    def queryMatch(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT blueteamtag AS "Blue Team", redteamtag AS "Red Team", bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS "Duración", year AS "Año", season AS "Temporada" FROM lol.leagueoflegends ORDER BY YEAR ASC;",(data,data,data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception,e:
+            print str(e)
+            print "Can't execute query"
+
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:
