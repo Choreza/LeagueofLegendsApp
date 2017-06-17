@@ -65,4 +65,4 @@ def match_page():
         print data
         print str(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
-    return render_template("test.html", titulo=name, data=data)
+    return render_template("seasons.html", data=data)
