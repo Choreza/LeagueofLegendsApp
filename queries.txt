@@ -1,0 +1,4 @@
+SELECT blueteamtag AS "Blue Team", redteamtag AS "Red Team", bresult, rresult,
+ TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS "Duración", year AS "Año", season AS "Temporada"
+FROM lol.leagueoflegends
+ORDER BY YEAR ASC;

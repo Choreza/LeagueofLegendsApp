@@ -45,6 +45,16 @@ class SQLWrapper:
         except Exception,e:
             print str(e)
             print "Can't execute query"
+
+
+    def querySeason(self, data):
+        try:
+            try:
+                self.curr.fetchall()
+            except:
+                pass
+            self.curr.execute()
+
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:
