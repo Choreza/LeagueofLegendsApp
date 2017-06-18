@@ -89,3 +89,7 @@ def season_page():
 @application.route("/date")
 def date_page():
     return render_template("date_search.html")
+
+@application.route("/player")
+def player_page():
+    return render_template("player_search.html")
