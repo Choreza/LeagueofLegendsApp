@@ -60,7 +60,7 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-   	def queryMatchBySeason(self, data):
+   	def queryMatchBySeason(self):
    		try:
    			try:
    				self.cur.fetchall()
@@ -71,7 +71,7 @@ class SQLWrapper:
    			return self.colnames
    		except Exception, e:
    			print str(e)
-   			
+
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:
