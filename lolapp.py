@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 DEBUG = True
 parser = Parser()
 SQL = SQLWrapper()
@@ -23,7 +26,7 @@ def hola(name):
     data = parser.parseChampionQuery("Winrate por Season",SQL.colnames,SQL.fetch())
     data += "<br>"
     SQL.queryChampionYear(name)
-    data += parser.parseChampionQuery("Winrate por Anho"A,SQL.colnames, SQL.fetch())
+    data += parser.parseChampionQuery("Winrate por Año",SQL.colnames, SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
