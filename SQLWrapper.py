@@ -60,7 +60,10 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-   	def queryMatchBySeason(self):
+
+
+            
+  	def queryMatchBySeason(self):
    		try:
    			try:
    				self.cur.fetchall()
