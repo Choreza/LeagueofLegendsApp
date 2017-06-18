@@ -42,11 +42,9 @@ def handle_data():
         print name
     return redirect(url_for("hola", name=name))
 
-@application.route("/season/<season>/<order>")
-def season_matchs(season, order = 'ASC'):
-    season = season.capitalize()
-    order = order.upper()
-    SQL.queryMatchBySeason(season, order)
+@application.route("/season")
+def season_matchs():
+    SQL.queryMatchBySeason("Summer_Season", "ASC")
     
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
