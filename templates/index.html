@@ -1,49 +1,139 @@
-{% extends "layout.html"}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-ico/favicon.png">
 
-{% block body %}
-<!-- Presentacion de NQSUF -->
+    <title>No quiero ser un feeder </title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename = 'css/main.css')}}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.conf.js')}}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top" id="cabecera">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href={{ url_for("welcome_page") }}>NO QUIERO SER UN FEEDER</a>
+           <ul class="nav navbar-nav navbar-right">
+            <li><a href={{ url_for("work_page") }}>Ayuda</a></li>
+            <li><a href={{ url_for("about_page") }}>Sobre Nosotros</a></li>
+            <li><a href={{ url_for("contact_page") }}>Contáctanos</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Presentacion de NQSUF -->
     <div id="ww">
-	    <div class="container">
+      <div class="container">
+      <div class="row">
+          <h1>Bienvenidos a NO QUIERO SER UN FEEDER!</h1>
+          <p>En nuestra plataforma encontrarás las estadísticas necesarias para tomar las mejores decisiones en la grieta!  </p>
+          <p>Con todo lo aprendido SACA EL CHALLENGER QUE TIENES DENTRO!</p>
+      </div><!-- /row -->
+      </div> <!-- /container -->
+  </div><!-- /ww -->
+
+
+  <!-- +++++ Projects Section +++++ -->
+
+  <div class="container pt">
+    <div class="row mt centered">
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/campeones.png')}}" alt="" /></a>
+        <p>Busca por Campeón</p>
+      </div>
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/equipo.png')}}" alt="" /></a>
+        <p>Busca por Equipos</p>
+      </div>
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
+        <p>Busca por Season</p>
+      </div>
+    </div><!-- /row -->
+    <div class="row mt centered">
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port04.jpg')}}" alt="" /></a>
+        <p>Busca por Invocador</p>
+      </div>
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port05.jpg')}}" alt="" /></a>
+        <p>Busca por Fecha</p>
+      </div>
+      <div class="col-lg-4">
+        <a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port06.jpg')}}" alt="" /></a>
+        <p>HOLA</p>
+      </div>
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+
+    <!-- +++++ Footer Section +++++ -->
+
+	<div id="footer">
+		<div class="container">
 			<div class="row">
-					<h1>Bienvenidos a NO QUIERO SER UN FEEDER!</h1>
-					<p>En nuestra plataforma encontrarás las estadísticas necesarias para tomar las mejores decisiones en la grieta!  </p>
-					<p>Con todo lo aprendido SACA EL CHALLENGER QUE TIENES DENTRO!</p>
-			</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /ww -->
+				<div class="col-lg-4">
+					<h4>No quiero ser Feeder</h4>
+					<p>
+						Beaucheff 851,<br/>
+						+569 75675256, <br/>
+						Santiago, Chile.
+					</p>
+				</div><!-- /col-lg-4 -->
+
+				<div class="col-lg-4">
+					<h4>Buscanos en Redes Sociales</h4>
+					<p>
+						<a href="#">Instagram</a><br/>
+						<a href="#">Twitter</a><br/>
+						<a href="#">Facebook</a>
+					</p>
+				</div><!-- /col-lg-4 -->
+
+				<div class="col-lg-4">
+					<h4>¡Saca el Challenger que llevas dentro!</h4>
+					<p>Nuestra misión es que dejes de ser manco</p>
+				</div><!-- /col-lg-4 -->
+
+			</div>
+
+		</div>
+	</div>
 
 
-	<!-- +++++ Projects Section +++++ -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+  </body>
+</html>
 
-	<div class="container pt">
-		<div class="row mt centered">
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/campeones.png')}}" alt="" /></a>
-				<p>Busca por Campeón</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/equipo.png')}}" alt="" /></a>
-				<p>Busca por Equipos</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
-				<p>Busca por Season</p>
-			</div>
-		</div><!-- /row -->
-		<div class="row mt centered">
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port04.jpg')}}" alt="" /></a>
-				<p>Busca por Invocador</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port05.jpg')}}" alt="" /></a>
-				<p>Busca por Fecha</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port06.jpg')}}" alt="" /></a>
-				<p>HOLA</p>
-			</div>
-		</div><!-- /row -->
-	</div><!-- /container -->
-
-{% endblock %}
