@@ -63,6 +63,11 @@ def handle_season():
         print order
     return redirect(url_for("season_matchs", season = season, order = order))
 
+@application.route("/handle_player1",methods=['POST'])
+def handle_player1():
+    name = str(request.form['playerName'])
+    return redirect(url_for("player1_matchs",name = name))
+
 @application.route("/about")
 def about_page():
     return render_template("about.html")
