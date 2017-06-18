@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="../../docs-ico/favicon.png">
 
     <title>No quiero ser un feeder </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
+   <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
+
 
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename = 'css/main.css')}}" rel="stylesheet">
@@ -40,30 +41,71 @@
           </button>
           <a class="navbar-brand" href={{ url_for("welcome_page") }}>NO QUIERO SER UN FEEDER</a>
            <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD:static/NOFEEDER/work.html
-            <li><a href="work.html"></a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="contact.html">Contáctanos</a></li>
-=======
             <li><a href={{ url_for("work_page") }}>Ayuda</a></li>
             <li><a href={{ url_for("about_page") }}>Sobre Nosotros</a></li>
             <li><a href={{ url_for("contact_page") }}>Contáctanos</a></li>
->>>>>>> 878968768daf8514b588a3710f95a5443b7c038e:templates/work.html
           </ul>
         </div>
       </div>
     </div>
-	
-	
+
+<!-- Presentacion de NQSUF -->
+    <div id="ww">
+	    <div class="container">
+			<div class="row" id="fondo1">
+					<h1>Bienvenidos a NO QUIERO SER UN FEEDER!</h1>
+					Estadísticas necesarias para tomar las mejores decisiones en la grieta estan acá!
+					<center>Con todo lo aprendido SACA EL CHALLENGER QUE TIENES DENTRO!</center>
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+
+
 	<!-- +++++ Projects Section +++++ -->
-	
+
 	<div class="container pt">
-
-  Cómo hacer una consulta?
-
+		<div class="row mt centered">
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/campeones.png')}}" alt="" /></a>
+				<p>Busca por Campeón</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/equipo.png')}}" alt="" /></a>
+				<p>Busca por Equipos</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
+				<p>Busca por Season</p>
+			</div>
+		</div><!-- /row -->
+		<div class="row mt centered">
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port04.jpeg')}}" alt="" /></a>
+				<p>Busca por Invocador</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/fecha.jpg')}}" alt="" /></a>
+				<p>Busca por Fecha</p>
+			</div>
+			<!--<div class="col-lg-4">
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/port06.jpg" alt="" /></a>
+=======
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port04.jpg')}}" alt="" /></a>
+				<p>Busca por Invocador</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port05.jpg')}}" alt="" /></a>
+				<p>Busca por Fecha</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" href={{ url_for("work01_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port06.jpg')}}" alt="" /></a>
+>>>>>>> 878968768daf8514b588a3710f95a5443b7c038e:templates/index.html
+				<p>HOLA</p>
+			</div>-->
+		</div><!-- /row -->
 	</div><!-- /container -->
-	
-	
+
+
 	<!-- +++++ Footer Section +++++ -->
 
 	<div id="footer">
