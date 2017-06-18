@@ -36,7 +36,7 @@ class Parser:
         return self.tbody("\n" + h + "\n")
 
     def parseChampionQuery(self,title,colnames,rows):
-        data = self.h2(title)
+        data = self.h2(title.decode("utf8"))
         data += "<hr>"
         table = ""
         for row in rows:
