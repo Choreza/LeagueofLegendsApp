@@ -19,11 +19,12 @@ def hola(name):
     if DEBUG:
         print name
     SQL.queryChampion(name)
-    data = parser.tableheader(SQL.colnames)
+    #data = parser.tableheader(SQL.colnames)
+    data = parser.parseChampionQuery("Winrate por Season",SQL.colnames,SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
-    data += parser.tableBody(SQL.fetch())
+    #data += parser.tableBody(SQL.fetch())
     return render_template("test.html", titulo=name, data=data)
 
 
