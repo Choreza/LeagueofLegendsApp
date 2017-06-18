@@ -76,7 +76,7 @@ def date_matchs(date, order):
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
-    return render_template(url_for("date.html", date_name=date, order=oder))
+    return render_template(url_for("date.html", date_name=date, order=order))
 
 @application.route("/about")
 def about_page():
