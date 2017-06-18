@@ -42,7 +42,7 @@ def handle_data():
         print name
     return redirect(url_for("hola", name=name))
 
-@application.route("/season")
+@application.route("/season/wea")
 def season_matchs():
     SQL.queryMatchBySeason("Summer_Season", "ASC")
     
