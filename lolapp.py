@@ -34,8 +34,8 @@ def hola(name):
     return render_template("test.html", titulo=name, data=data)
 
 
-@application.route("/champion/<name>", methods=['POST'])
-def handle_champion(name):
+@application.route("/champion/<name>")
+def champion_match(name):
     name = name.capitalize()
     if DEBUG:
         print name
@@ -50,6 +50,14 @@ def handle_champion(name):
         print str(SQL.colnames)
     # data += parser.tableBody(SQL.fetch())
     return render_template("champion.html", titulo=name, data=data)
+
+
+@application.route("/handle_champion", methods=['POST'])
+def handle_champion():
+    name = str(request.form['championName']).strip().lower()
+    if DEBUG:
+        print name
+    return redirect(url_for("champion_match", name = name))
 
 
 @application.route("/handle_data", methods=['POST'])
