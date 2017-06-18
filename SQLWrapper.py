@@ -109,7 +109,7 @@ class SQLWrapper:
             except:
                 pass
             self.cur.execute(
-                "SELECT year, COUNT(invocador) AS conteo FROM lol.lolcito WHERE invocador= (%s) GROUP BY(year)",(data, ))
+                "SELECT year, COUNT(invocador) AS conteo FROM lol.lolcito WHERE invocador= (%s) GROUP BY(year) ORDER BY year DESC",(data, ))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
