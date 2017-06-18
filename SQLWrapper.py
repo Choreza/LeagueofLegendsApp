@@ -56,9 +56,14 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año (%s)",
-                (season, order))
+            if order == "DESC":
+                self.cur.execute(
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año DESC",
+                (season, ))
+            else:
+                self.cur.execute(
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año ASC",
+                (season, ))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
