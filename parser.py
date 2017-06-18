@@ -48,5 +48,5 @@ class Parser:
             lista = self.li(nametime + self.ul(lista) )
             table += lista
         table = self.ul(table)
-        data + =table
+        data += table
         return data
