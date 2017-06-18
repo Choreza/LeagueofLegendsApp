@@ -127,7 +127,7 @@ def handle_champion():
 
 @application.route("/handle_player1", methods=['POST'])
 def handle_player1():
-    name = str(request.form['playerName'])
+    name = str(request.form['playerName']).strip().lower().capitalize()
     return redirect(url_for("player1_matchs", name=name))
 
 
