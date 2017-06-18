@@ -57,10 +57,11 @@ def season_matchs(season,order):
 @application.route("/handle_season", methods=['POST'])
 def handle_season():
     season = str(request.form['seasonGetter'])
+    order = str(request.form['orderGetter'])
     if DEBUG:
         print season
-    #order = str(request.form['orderGetter']).strip.lower()
-    return redirect(url_for("season_matchs", season = season, order = "ASC"))
+        print order
+    return redirect(url_for("season_matchs", season = season, order = order))
 
 @application.route("/about")
 def about_page():
