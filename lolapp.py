@@ -63,6 +63,21 @@ def handle_season():
         print order
     return redirect(url_for("season_matchs", season = season, order = order))
 
+@application.route("/handle_date", methods=["POST"])
+def handle_date():
+    season = str(request.form['dateGetter'])
+    order = str(request.form['orderGetter'])
+    return redirect(url_for("date_matchs"), date=date, order=order)
+
+@application.route("/date/<date>/<order>")
+def date_matchs(date, order):
+    SQL.queryMatchByDate(date, order)
+
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+    return render_template(url_for("date.html", date_name=date, order=oder))
+
 @application.route("/about")
 def about_page():
     return render_template("about.html")

@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>No quiero ser un feeder, {{ titulo }} </title>
+    <title>No quiero ser un feeder,  Historial de Partidas </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
@@ -51,9 +51,11 @@
 
 	<!-- +++++ Consulta Section +++++ -->
 
+	<!-- +++++ Consulta Section +++++ -->
+
 	<div class="container pt">
-        <h2>Selecciona una temporada</h2>
-        <div class="row">
+        <h2>Selecciona una fecha</h2>
+       <div class="row">
             <div class="col-lg-4">
               <a class="zoom green" href=#><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/fecha.jpg')}}" alt="" /></a>
             </div>
@@ -79,7 +81,19 @@
                 </div>
             </form>
         </div>
+    <!-- +++++ Result Section +++++ -->
+        <h2>Resultados para {{ date_name }}</h2>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    {{data|safe}}
+                </table>
+            </div>
+        </div>
     </div><!-- /container -->
+
+    
 	<!-- +++++ Footer Section +++++ -->
 
 	<div id="footer">
