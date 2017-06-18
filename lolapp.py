@@ -55,7 +55,7 @@ def season_matchs(season,order):
 
 @application.route("/handle_season", methods=['POST'])
 def handle_season():
-    season = str(request.form['seasonGetter']).strip().lower()
+    season = str(request.form['seasonGetter'])
     if DEBUG:
         print season
     #order = str(request.form['orderGetter']).strip.lower()
