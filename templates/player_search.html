@@ -58,13 +58,12 @@
 				<a class="zoom green" href={{ url_for("player_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/port04.jpeg')}}" alt="" /></a>
             </div>
             <form class = "form-inline" method = "post" action = {{ url_for("handle_player1") }}>
+                <label>Pon el Invocador: </label>
                 <div class="form-group">
-                    <label>Pon el Invocador: </label>
                     <input class = "form-control" type="text" name="playerName" placeholder="Input text">
-                </div>
-                <div class="form-group">
                     <button type="submit" class = "btn btn-default">Submit</button>
                 </div>
+
             </form>
         </div>
     </div><!-- /container -->
