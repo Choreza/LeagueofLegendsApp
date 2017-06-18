@@ -40,7 +40,7 @@ class Parser:
         data += "<hr>"
         table = ""
         for row in rows:
-            nametime = str(row[0])
+            nametime = str(row[0])+"<br>"
             lista = ""
             for i in range(1,len(row)):
                 items=self.b(colnames[i]+": ") + str(row[i])
