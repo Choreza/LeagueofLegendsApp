@@ -101,6 +101,9 @@ def handle_player1():
 def handle_date():
     date = str(request.form['dateGetter'])
     order = str(request.form['orderGetter'])
+    if DEBUG:
+        print date
+        print order
     return redirect(url_for("date_matchs", date=date, order=order))
 
 
@@ -111,7 +114,7 @@ def date_matchs(date, order):
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
-    return render_template("date.html", date_name=date, order=order)
+    return render_template("date.html", date_name=date, data=data)
 
 
 @application.route("/about")
