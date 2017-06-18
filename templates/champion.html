@@ -57,6 +57,7 @@
                 <a class="zoom green" href={{ url_for("champion_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/campeones.png')}}" alt="" /></a>
             </div>
             <div class="col-sm-8">
+                <h2>Búsqueda por Campeón</h2>
                 <form class = "form-inline" method = "post" action = {{ url_for("handle_champion") }}>
                     <div class="form-group">
                         <input class = "form-control" type="text" name="championName" placeholder="Enter query">
