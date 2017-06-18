@@ -115,6 +115,21 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+
+    def queryMatchByPlayer3(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute(
+                "SELECT DISTINCT(team) FROM lol.lolcito WHERE invocador = (%s)",(data,))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
+
     def queryChampionYear(self, data):
         try:
             try:
