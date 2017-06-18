@@ -52,32 +52,34 @@
 	<!-- +++++ Consulta Section +++++ -->
 
 	<div class="container pt">
-        <h2>Selecciona una temporada</h2>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-sm-4">
               <a class="zoom green" href=#><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/fecha.jpg')}}" alt="" /></a>
             </div>
-            <form class = "form-inline" method = "post" action = {{ url_for("handle_date") }}>
-                <div class="form-group">
-                    <label for="sel1">Selecciona Fecha:</label>
-                    <select class="form-control" id="sel1" name="dateGetter">
-                        <option>2014</option>
-                        <option>2015</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Selecciona orden:</label>
-                    <select class="form-control" id="sel1" name="orderGetter">
-                        <option>ASC</option>
-                        <option>DESC</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class = "btn btn-default">Submit</button>
-                </div>
-            </form>
+            <div class="col-sm-8">
+                <h2>Búsqueda por Fecha</h2>
+                <form class = "form-inline" method = "post" action = {{ url_for("handle_date") }}>
+                    <div class="form-group">
+                        <label for="sel1">Selecciona Fecha:</label>
+                        <select class="form-control" id="sel1" name="dateGetter">
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Selecciona orden:</label>
+                        <select class="form-control" id="sel1" name="orderGetter">
+                            <option>ASC</option>
+                            <option>DESC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class = "btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div><!-- /container -->
 	<!-- +++++ Footer Section +++++ -->
