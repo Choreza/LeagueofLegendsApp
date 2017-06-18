@@ -52,7 +52,7 @@ def season_matchs(season,order):
     data += "<br>"
 
     data += parser.tableBody(SQL.fetch())
-    return render_template("season.html", data=data)
+    return render_template("season.html", season_name = season,data=data)
 
 @application.route("/handle_season", methods=['POST'])
 def handle_season():
