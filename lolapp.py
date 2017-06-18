@@ -68,6 +68,21 @@ def handle_player1():
     name = str(request.form['playerName'])
     return redirect(url_for("player1_matchs",name = name))
 
+@application.route("/handle_date", methods=["POST"])
+def handle_date():
+    date = str(request.form['dateGetter'])
+    order = str(request.form['orderGetter'])
+    return redirect(url_for("date_matchs", date=date, order=order))
+
+@application.route("/date/<date>/<order>")
+def date_matchs(date, order):
+    SQL.queryMatchByDate(date, order)
+
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+    return render_template("date.html", date_name=date, order=order)
+
 @application.route("/about")
 def about_page():
     return render_template("about.html")

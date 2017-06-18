@@ -69,6 +69,25 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryMatchByDate(self, date, order="ASC"):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            if order == "DESC":
+                self.cur.execute(
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada DESC",
+                (date, ))
+            else:
+                 self.cur.execute(
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada ASC",
+                (date, ))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
     def queryChampionYear(self, data):
         try:
             try:
