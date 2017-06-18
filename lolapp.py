@@ -67,6 +67,9 @@ def handle_season():
 def handle_date():
     date = str(request.form['dateGetter'])
     order = str(request.form['orderGetter'])
+    if DEBUG:
+        print date
+        print order
     return redirect(url_for("date_matchs", date=date, order=order))
 
 @application.route("/date/<date>/<order>")
