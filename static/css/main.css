@@ -28,9 +28,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 35px;
+	font-size: 45px;
 	margin-top: 30px;
 	margin-bottom: 30px;
+	color: #ffffff;
+	text-shadow: -2px -2px 1px #000;
 }
 
 
@@ -149,7 +151,15 @@ a:after {
 #ww {
 	padding-top: 70px;
 	padding-bottom: 70px;
-	background-color: #f2f2f2;
+	background-image: url('fondo1.jpeg');
+
+}
+
+#fondo1 {
+	color: #ffffff;
+	font-weight: bolder;
+	font-size: 28px;
+    font-family: "Montserrat";
 }
 
 
