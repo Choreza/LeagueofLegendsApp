@@ -11,15 +11,14 @@
     <title>No quiero ser un feeder </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'css/main.css')}}" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/hover.zoom.conf.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,6 +28,7 @@
   </head>
 
   <body>
+
     <!-- Static navbar -->
     <div class="navbar navbar-inverse navbar-static-top" id="cabecera">
       <div class="container">
@@ -38,39 +38,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">NO QUIERO SER UN FEEDER</a>
+          <a class="navbar-brand" href={{ url_for("welcome_page") }}>NO QUIERO SER UN FEEDER</a>
            <ul class="nav navbar-nav navbar-right">
-            <li><a href="work.html">Ayuda</a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="contact.html">Contáctanos</a></li>
+            <li><a href={{ url_for("work_page") }}>Ayuda</a></li>
+            <li><a href={{ url_for("about_page") }}>Sobre Nosotros</a></li>
+            <li><a href={{ url_for("contact_page") }}>Contáctanos</a></li>
           </ul>
         </div>
       </div>
     </div>
-
-	<!-- +++++ Welcome Section +++++ -->
-	<div id="ww">
-	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 centered">
-					<img src="assets/img/user.jpeg" alt="Gabriel" class = "img-circle" width="200">
-					<img src="assets/img/mariapaz.jpg" alt="MariaPaz" class = "img-circle" width="200">
-					<img src="assets/img/user.jpeg" alt="Gabriel" class = "img-circle" width="200">
-
-					<h1>¿Quiénes somos?</h1>
-					<p>Somos estudiantes de Ingeniería Civil de la Universidad de Chile. Nuestra pasión por las bases de datos y el lol nos ha llevado a crear esta maravillosa plataforma.</p>
-					<p>Pero nada de esto habría sido posible de no ser por el gran maestro Haidan y sus secuases. Con amor esta plataforma se las dedicamos.</p>
-					<p>Para terminar es un agrado anunciarles que esta plataforma es gratis y lo será por siempre.</p>
-					<br>
-					<p><navbar-right> Grupo 7 </navbar-right></p>
-				
-				</div><!-- /col-lg-8 -->
-			</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /ww -->
 	
 	
-
+	<!-- +++++ Consulta Section +++++ -->
+	
+	<div class="container pt">
+        <form class = "form-inline" method = "post" action = {{ url_for("handle_data") }}>
+            <div class="form-group">
+                <input class = "form-control" type="text" name="projectFilepath" placeholder="Enter query">
+            </div>
+            <div class="form-group">
+                <button type="submit" class = "btn btn-default">Submit</button>
+            </div>
+        </form>
+	</div><!-- /container -->
 	
 	<!-- +++++ Footer Section +++++ -->
 
@@ -109,6 +99,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
   </body>
 </html>

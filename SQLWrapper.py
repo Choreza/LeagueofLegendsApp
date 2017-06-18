@@ -20,13 +20,35 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
-            self.numpages = (self.cur.fetchone()[0])/100 + 1
+            #self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
+            #self.numpages = (self.cur.fetchone()[0])/100 + 1
             self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
             self.colnames = [desc[0] for desc in self.cur.description]
-        except:
+            try:
+                assert isinstance(self.cur.rowcount, int)
+            except:
+                print "cago rowcount"
+            self.numpages = self.cur.rowcount
+            print "rows: "+ str(self.numpages)
+        except Exception,e:
+            print str(e)
             print "Can't execute query"
 
+    def queryChampion(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT foo.season,foo.wins,bar.total, round((CAST(foo.wins AS NUMERIC )*100 / bar.total),2) AS winrate FROM (SELECT season,COUNT(season) AS wins FROM lol.leagueoflegends WHERE ((%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp) AND rresult IS true) OR ((%s) IN (bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) AND bresult IS true) GROUP BY season) foo, (SELECT season,COUNT(season) AS total FROM lol.leagueoflegends WHERE (%s) IN (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp,bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) GROUP BY (season) ) bar WHERE foo.season = bar.season", (data,data,data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception,e:
+            print str(e)
+            print "Can't execute query"
     #fetch los siguientes 100 resultados
     def fetch(self):
-        return self.cur.fetchmany(100)
+        try:
+            return self.cur.fetchmany(100)
+        except Exception,e:
+            print str(e)
+            print self.cur.query
