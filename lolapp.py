@@ -23,7 +23,7 @@ def hola(name):
     data = parser.parseChampionQuery("Winrate por Season",SQL.colnames,SQL.fetch())
     data += "<br>"
     SQL.queryChampionYear(name)
-    data += parser.parseChampionQuery("Winrate por Año",SQL.colnames, SQL.fetch())
+    data += parser.parseChampionQuery("Winrate por Anho"A,SQL.colnames, SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
