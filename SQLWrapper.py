@@ -69,7 +69,9 @@ class SQLWrapper:
    			self.cur.execute("SELECT blueteamtag AS "+"Blue Team"+", redteamtag AS "+"Red Team"+", bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS "+"Duración"+", year AS "+"Año"+", season AS "+"Temporada"+" FROM lol.leagueoflegends ORDER BY YEAR ASC;")
    			self.colnames = [desc[0].capitalize() for desc in self.cur.description]
    			return self.colnames
-
+   		except Exception, e:
+   			print str(e)
+   			
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:
