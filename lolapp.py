@@ -47,9 +47,10 @@ def season_matchs(season,order):
     if DEBUG:
         print season + order
     SQL.queryMatchBySeason(season, order)
-    
+
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
+
     data += parser.tableBody(SQL.fetch())
     return render_template("season.html", data=data)
 
