@@ -23,7 +23,7 @@ class Parser:
     def tableheader(self,header):
         h = ""
         for el in header:
-            h += "\n" + self.th(el) + "\n"
+            h += "\n" + self.th(el.decode("utf8")) + "\n"
         return self.thead("\n" + self.tr(h) + "\n")
 
     def tableBody(self,rows):
@@ -31,7 +31,7 @@ class Parser:
         for row in rows:
             d = ""
             for el in row:
-                d += "\n" + self.td(str(el)) + "\n"
+                d += "\n" + self.td(str(el).decode("utf8")) + "\n"
             h += "\n" + self.tr(d) + "\n"
         return self.tbody("\n" + h + "\n")
 
