@@ -34,7 +34,7 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-    def queryChampion(self,data):
+    def queryChampionSeason(self,data):
         try:
             try:
                 self.cur.fetchall()
@@ -45,6 +45,19 @@ class SQLWrapper:
         except Exception,e:
             print str(e)
             print "Can't execute query"
+
+    def queryChampionYear(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("select foo.year,foo.wins,bar.total, cast(foo.wins as double precision) / bar.total as winrate from (select year,count(year) as wins from lol.leagueoflegends  where ((%s) in (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp) and rresult is true) or ((%s) in (bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) and bresult is true) group by year) foo, (select year,count(year) as total from lol.leagueoflegends  where (%s) in (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp,bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) group by (year) ) bar where foo.year = bar.year;", (data,data,data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception,e:
+            print str(e)
+            print "Can't execute query"
+
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:

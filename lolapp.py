@@ -18,9 +18,12 @@ def hola(name):
     name = name.capitalize()
     if DEBUG:
         print name
-    SQL.queryChampion(name)
+    SQL.queryChampionSeason(name)
     #data = parser.tableheader(SQL.colnames)
     data = parser.parseChampionQuery("Winrate por Season",SQL.colnames,SQL.fetch())
+    data += "<br>"
+    SQL.queryChampionYear(name)
+    data += parser.parseChampionQuery("Winrate por Año",SQL.colnames, SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
