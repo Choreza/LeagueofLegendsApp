@@ -23,7 +23,7 @@ def hola(name):
     if DEBUG:
         print data
         print str(SQL.colnames)
-    data += parser.tableBody(SQL.fetch())
+    data += parser.tableBody(SQL.fetch()test/camille)
     return render_template("test.html", titulo=name, data=data)
 
 
@@ -33,7 +33,6 @@ def handle_data():
     if DEBUG:
         print name
     return redirect(url_for("hola", name=name))
-
 
 @application.route("/about")
 def about_page():
