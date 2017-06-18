@@ -34,7 +34,7 @@ def hola(name):
     return render_template("test.html", titulo=name, data=data)
 
 
-@application.route("/champion/<name>")
+@application.route("/champion/<name>", methods=['POST'])
 def handle_champion(name):
     name = name.capitalize()
     if DEBUG:
