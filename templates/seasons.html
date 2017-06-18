@@ -49,59 +49,55 @@
     </div>
 
 
-	<!-- +++++ Consulta Section +++++ -->
-  <div class="container">
-    <h2> Historial de Partidas </h2>
-    <p> Aquí puedes buscar las partidas de tus team favoritos </p>
-    <div class="row">
-      <div class="col-sm-1">
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Año
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-            </ul>
-          </div>
+  <!-- +++++ Consulta Section +++++ -->
+
+  <div class="container pt">
+        <form class = "form-inline" method = "post" action = {{ url_for("handle_data") }}>
+            <div class="form-group">
+                <input class = "form-control" type="text" name="projectFilepath" placeholder="Enter query">
+            </div>
+            <div class="form-group">
+                <button type="submit" class = "btn btn-default">Submit</button>
+            </div>
+        </form>
+  </div><!-- /container -->
+  <div class="table-responsive">
+        <table class = "table table-striped">
+        {{data|safe}}
+        </table>
+    </div>
+  <!-- +++++ Footer Section +++++ -->
+
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4>No quiero ser Feeder</h4>
+          <p>
+            Beaucheff 851,<br/>
+            +569 75675256, <br/>
+            Santiago, Chile.
+          </p>
+        </div><!-- /col-lg-4 -->
+
+        <div class="col-lg-4">
+          <h4>Buscanos en Redes Sociales</h4>
+          <p>
+            <a href="#">Instagram</a><br/>
+            <a href="#">Twitter</a><br/>
+            <a href="#">Facebook</a>
+          </p>
+        </div><!-- /col-lg-4 -->
+
+        <div class="col-lg-4">
+          <h4>¡Saca el Challenger que llevas dentro!</h4>
+          <p>Nuestra misión es que dejes de ser manco</p>
+        </div><!-- /col-lg-4 -->
+
       </div>
+
     </div>
   </div>
-
-	<!-- +++++ Footer Section +++++ -->
-
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<h4>No quiero ser Feeder</h4>
-					<p>
-						Beaucheff 851,<br/>
-						+569 75675256, <br/>
-						Santiago, Chile.
-					</p>
-				</div><!-- /col-lg-4 -->
-
-				<div class="col-lg-4">
-					<h4>Buscanos en Redes Sociales</h4>
-					<p>
-						<a href="#">Instagram</a><br/>
-						<a href="#">Twitter</a><br/>
-						<a href="#">Facebook</a>
-					</p>
-				</div><!-- /col-lg-4 -->
-
-				<div class="col-lg-4">
-					<h4>¡Saca el Challenger que llevas dentro!</h4>
-					<p>Nuestra misión es que dejes de ser manco</p>
-				</div><!-- /col-lg-4 -->
-
-			</div>
-
-		</div>
-	</div>
 
 
     <!-- Bootstrap core JavaScript
