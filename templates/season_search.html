@@ -57,22 +57,24 @@
             <div class="col-lg-4">
               <a class="zoom green" href=#><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
             </div>
-            <div class="col-sm-2">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" id="season" type="button" data-toggle="dropdown"> Temporada
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Summer_Season</a></li>
-                        <li><a href="#">Spring_Season</a></li>
-                        <li><a href="#">Winter_Season</a></li>
-                        <li><a href="#">Summer_Playoffs</a></li>
-                        <li><a href="#">Spring_Playoffs</a></li>
-                        <li><a href="#">Winter_Playoffs</a></li>
-                        <li><a href="#">International</a></li>
-                        <li><a href="#">Regional</a></li>
-                    </ul>
+            <form class = "form-inline" method = "post" action = {{ url_for("handle_data") }}>
+                <div class="form-group">
+                    <label for="sel1">Select list (select one):</label>
+                    <select class="form-control" id="sel1" name="season_name">
+                        <option>Summer_Season</option>
+                        <option>Spring_Season</option>
+                        <option>Winter_Season</option>
+                        <option>Summer_Playoffs</option>
+                        <option>Spring_Playoffs</option>
+                        <option>Winter_Playoffs</option>
+                        <option>International</option>
+                        <option>Regional</option>
+                    </select>
                 </div>
-            </div>
+                <div class="form-group">
+                    <button type="submit" class = "btn btn-default">Submit</button>
+                </div>
+            </form>
             <div class="col-sm-2">
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" id="order" type="button" data-toggle="dropdown"> Orden

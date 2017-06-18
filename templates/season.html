@@ -54,19 +54,25 @@
 	<div class="container pt">
         <form class = "form-inline" method = "post" action = {{ url_for("handle_season") }}>
             <h2>Selecciona una temporada</h2>
+
+
             <div class="form-group">
-                <label for="sel1">Select list (select one):</label>
-                    <select class="form-control" id="sel1">
-                        <option>Summer_Season</option>
-                        <option>Spring_Season</option>
-                        <option>Winter_Season</option>
-                        <option>Summer_Playoffs</option>
-                        <option>Spring_Playoffs</option>
-                        <option>Winter_Playoffs</option>
-                        <option>International</option>
-                        <option>Regional</option>
-                </select>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Temporada
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">HTML</a>Summer_Season</li>
+                  <li><a href="#">HTML</a>Spring_Season</li>
+                  <li><a href="#">HTML</a>Winter_Season</li>
+                  <li><a href="#">HTML</a>Summer_Playoffs</li>
+                  <li><a href="#">HTML</a>Spring_Playoffs</li>
+                  <li><a href="#">HTML</a>Winter_Playoffs</li>
+                  <li><a href="#">HTML</a>International</li>
+                  <li><a href="#">HTML</a>Regional</li>
+                </ul>
+              </div>
             </div>
+
             <div class="form-group">
                 <button type="submit" class = "btn btn-default">Submit</button>
             </div>

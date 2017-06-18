@@ -42,9 +42,11 @@ def handle_data():
         print name
     return redirect(url_for("hola", name=name))
 
-@application.route("/season/wea")
-def season_matchs():
-    SQL.queryMatchBySeason("Summer_Season", "ASC")
+@application.route("/season/<season>/<order>")
+def season_matchs(season,order):
+    if DEBUG:
+        print season + order
+    SQL.queryMatchBySeason(season, order)
     
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
@@ -54,8 +56,8 @@ def season_matchs():
 @application.route("/handle_season", methods=['POST'])
 def handle_season():
     season = str(request.form['seasonGetter']).strip.lower()
-    order = str(request.form['orderGetter']).strip.lower()
-    return redirect(url_for("season_matchs", season = season, order = order))
+    #order = str(request.form['orderGetter']).strip.lower()
+    return redirect(url_for("season_matchs", season = season, order = "ASC"))
 
 @application.route("/about")
 def about_page():
