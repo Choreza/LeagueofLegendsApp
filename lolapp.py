@@ -97,6 +97,16 @@ def date_matchs(date, order):
     return render_template("date.html", date_name=date, data=data)
 
 
+@application.route("/player/<name>")
+def player1_matchs(name):
+    SQL.queryMatchByPlayer1(name)
+
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+    return render_template("player.html",player_name = name, data = data)
+
+
 @application.route("/handle_season", methods=['POST'])
 def handle_season():
     season = str(request.form['seasonGetter'])
