@@ -56,7 +56,7 @@ class SQLWrapper:
    	        pass
    	    self.cur.execute("SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends ORDER BY YEAR ASC")
    	    self.colnames = [desc[0].capitalize() for desc in self.cur.description]
-   	    return self.colnames
+   	    return self.cur.fetchall()
    	except Exception, e:
    	    print str(e)
    	    print "Can't execute query"
