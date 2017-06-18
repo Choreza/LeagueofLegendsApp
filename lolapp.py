@@ -78,4 +78,4 @@ def work01_page():
 
 @application.route("/season")
 def season_page():
-    return render_template("season_search")
+    return render_template("season_search.html")
