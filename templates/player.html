@@ -69,12 +69,22 @@
                 </form>
             </div>
         </div>
-        <h2>Resultados para {{ player_name }}</h2>
+        <h2>Resultados</h2>
         <hr>
+        <h3>Campeones usados por {{ player_name }}</h3>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-striped">
                     {{data|safe}}
+                </table>
+            </div>
+        </div>
+        <hr>
+        <h3>Cantidad de veces jugadas por año</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    {{data2|safe}}
                 </table>
             </div>
         </div>

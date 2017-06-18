@@ -102,6 +102,19 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryMatchByPlayer2(self,data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute(
+                "SELECT year, COUNT(invocador) AS conteo FROM lol.lolcito WHERE invocador= (%s) GROUP BY(year)",(data, ))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
     def queryChampionYear(self, data):
         try:
             try:

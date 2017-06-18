@@ -104,7 +104,12 @@ def player1_matchs(name):
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
-    return render_template("player.html",player_name = name, data = data)
+
+    SQL.queryMatchByPlayer2(name)
+    data2 = parser.tableheader(SQL.colnames)
+    data2 += "<br>"
+    data2 += parser.tableBody(SQL.fetch())
+    return render_template("player.html",player_name = name, data = data, data2 = data2)
 
 
 @application.route("/handle_season", methods=['POST'])
