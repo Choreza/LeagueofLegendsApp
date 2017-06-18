@@ -16,24 +16,6 @@ def welcome_page():
     return render_template("index.html")
 
 
-@application.route("/test/<name>")
-def hola(name):
-    name = name.capitalize()
-    if DEBUG:
-        print name
-    SQL.queryChampionSeason(name)
-    # data = parser.tableheader(SQL.colnames)
-    data = parser.parseChampionQuery("Winrate por Season", SQL.colnames, SQL.fetch())
-    data += "<br>"
-    SQL.queryChampionYear(name)
-    data += parser.parseChampionQuery("Winrate por Año", SQL.colnames, SQL.fetch())
-    if DEBUG:
-        print data
-        print str(SQL.colnames)
-    # data += parser.tableBody(SQL.fetch())
-    return render_template("test.html", titulo=name, data=data)
-
-
 @application.route("/champion/<name>")
 def champion_match(name):
     name = name.capitalize()
@@ -58,14 +40,6 @@ def handle_champion():
     if DEBUG:
         print name
     return redirect(url_for("champion_match", name = name))
-
-
-@application.route("/handle_data", methods=['POST'])
-def handle_data():
-    name = str(request.form['projectFilepath']).strip().lower()
-    if DEBUG:
-        print name
-    return redirect(url_for("hola", name=name))
 
 
 @application.route("/season/<season>/<order>")
