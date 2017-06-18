@@ -56,13 +56,4 @@ def work01_page():
 
 @application.route("/match-history")
 def match_page():
-    name = name.capitalize()
-    if DEBUG:
-        print name
-    SQL.queryMatch(name)
-    data = parser.tableheader(SQL.colnames)
-    if DEBUG:
-        print data
-        print str(SQL.colnames)
-    data += parser.tableBody(SQL.fetch())
-    return render_template("seasons.html", data=data)
+    return render_template("seasons.html")
