@@ -42,7 +42,7 @@ class Parser:
         for row in rows:
             nametime = row[0]
             lista = ""
-            for i in range(1,row.length):
+            for i in range(1,len(row)):
                 items=self.b(colnames[i]+": ") + row[i]
                 lista+=self.li(items)
             lista = self.li(nametime + self.ul(lista) )
