@@ -57,19 +57,7 @@ class SQLWrapper:
         except Exception,e:
             print str(e)
             print "Can't execute query"
-
-    def queryMatch(self,data):
-        try:
-            try:
-                self.cur.fetchall()
-            except:
-                pass
-            self.cur.execute("SELECT blueteamtag AS "+"Blue Team"+", redteamtag AS "+"Red Team"+", bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS "+"Duracion"+", year AS "+"Ano"+", season AS "+"Temporada"+" FROM lol.leagueoflegends ORDER BY YEAR ASC;",(data,data,data))
-            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
-        except Exception,e:
-            print str(e)
-            print "Can't execute query"
-
+            
     #fetch los siguientes 100 resultados
     def fetch(self):
         try:

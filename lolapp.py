@@ -53,7 +53,3 @@ def work_page():
 @application.route("/work01")
 def work01_page():
     return render_template("work01.html")
-
-@application.route("/match-history")
-def match_page():
-    return render_template("seasons.html")
