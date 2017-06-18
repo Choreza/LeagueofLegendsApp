@@ -8,7 +8,7 @@ SQL = SQLWrapper()
 application = Flask(__name__)
 
 
-@application.route("/index.html")
+@application.route("/index")
 def welcome_page():
     return render_template("index.html")
 
