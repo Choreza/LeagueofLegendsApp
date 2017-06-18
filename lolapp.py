@@ -23,7 +23,7 @@ def hola(name):
     if DEBUG:
         print data
         print str(SQL.colnames)
-    data += parser.tableBody(SQL.fetch()test/camille)
+    data += parser.tableBody(SQL.fetch())
     return render_template("test.html", titulo=name, data=data)
 
 
