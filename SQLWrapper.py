@@ -15,7 +15,7 @@ class SQLWrapper:
         except:
             print "I am unable to connect to the database"
             raise
-
+            
     def query1(self,data):
         try:
             try:
@@ -47,11 +47,11 @@ class SQLWrapper:
         except Exception,e:
             print str(e)
             print "Can't execute query"
-
-   def queryMatchBySeason(self):
-   	try:
-   		try:
-   			self.cur.fetchall()
+    
+    def queryMatchBySeason(self):
+   	    try:
+   		    try:
+   			    self.cur.fetchall()
    		except:
    			pass
    		self.cur.execute("SELECT blueteamtag AS "+"""Blue Team"""+", redteamtag AS "+"""Red Team"""+", bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS "+"""Duración"""+", year AS "+"""Año"""+", season AS "+"""Temporada"""+" FROM lol.leagueoflegends ORDER BY YEAR ASC")
@@ -60,9 +60,9 @@ class SQLWrapper:
    	except Exception, e:
    		print str(e)
    		print "Can't execute query"
-
-   def queryChampionYear(self,data):
-   	try:
+        
+    def queryChampionYear(self,data):
+   	    try:
             try:
                 self.cur.fetchall()
             except:
@@ -72,11 +72,6 @@ class SQLWrapper:
         except Exception,e:
             print str(e)
             print "Can't execute query"
-
-
-
-
-  	
 
     #fetch los siguientes 100 resultados
     def fetch(self):
