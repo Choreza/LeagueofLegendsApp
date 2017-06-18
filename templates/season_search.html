@@ -57,7 +57,7 @@
             <div class="col-lg-4">
               <a class="zoom green" href=#><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
             </div>
-            <form class = "form-inline" method = "post" action = {{ url_for("handle_data") }}>
+            <form class = "form-inline" method = "post" action = {{ url_for("handle_season") }}>
                 <div class="form-group">
                     <label for="sel1">Select list (select one):</label>
                     <select class="form-control" id="sel1" name="season_name">
