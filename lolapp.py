@@ -42,6 +42,23 @@ def handle_data():
         print name
     return redirect(url_for("hola", name=name))
 
+@application.route("/season/<season>/<order>")
+def season_matchs(season, order = 'ASC'):
+    season = season.capitalize()
+    order = order.upper()
+    SQL.queryMatchBySeason(season, order)
+    
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+    return render_template("season.html", data=data)
+
+@application.route("/handle_season", methods=['POST'])
+def handle_season():
+    season = str(request.form['seasonGetter']).strip.lower()
+    order = str(request.form['orderGetter']).strip.lower()
+    return redirect(url_for("season_matchs", season = season, order = order))
+
 @application.route("/about")
 def about_page():
     return render_template("about.html")
@@ -60,3 +77,5 @@ def work_page():
 @application.route("/work01")
 def work01_page():
     return render_template("work01.html")
+
+
