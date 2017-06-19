@@ -209,6 +209,18 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryChampionBan(self, name):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT season, year, COUNT(*) AS conteo FROM lol.banvalues ban, lol.leagueoflegends loldata WHERE (ban_1 = (%s) OR ban_2 = (%s) OR ban_3 = (%s) OR ban_4 = (%s) OR ban_5 = (%s)) AND ban.matchhistory = loldata.matchhistory GROUP BY (season, year) ORDER BY year DESC;", (name, name, name, name, name))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
     # fetch los siguientes 100 resultados
     def fetch(self):
         try:
