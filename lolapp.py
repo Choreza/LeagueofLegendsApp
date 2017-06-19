@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
-DEBUG = True
+DEBUG = False
 parser = Parser()
 SQL = SQLWrapper()
 application = Flask(__name__)
