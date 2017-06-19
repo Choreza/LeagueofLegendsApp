@@ -200,4 +200,4 @@ def handle_game():
     date = str(request.form['dateGetter'])
     order = str(request.form['orderGetter'])
     season = str(request.form['seasonGetter'])
-    return redirect(url_for("game_matchs", team1=team1, team2=team2, year=date, season=season, order=order))
+    return redirect(url_for("game_matchs", team1=team1, team2=team2, year=date, season=season, order=order, offset = 0 ))
