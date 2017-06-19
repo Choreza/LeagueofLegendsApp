@@ -200,7 +200,7 @@ class SQLWrapper:
                 pass
             if order == "DESC":
                 self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year DESC",(data, data, data))
-            else
+            else:
                 self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year ASC",(data, data, data))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
