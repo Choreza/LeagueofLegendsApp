@@ -78,6 +78,9 @@ def champion_match(name):
     data += "<br>"
     SQL.queryChampionYear(name)
     data += parser.parseChampionQuery("Winrate por Año", SQL.colnames, SQL.fetch())
+    data += "<br>"
+    SQL.queryChampionBan(name)
+    data += parser.parseChampionQuery("Historial de Baneos", SQL.colnames, SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
