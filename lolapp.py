@@ -83,6 +83,7 @@ def champion_match(name):
     data += "<h2>Historial de baneos</h2>"
     data += "<hr>"
     data += parser.tableheader(SQL.colnames)
+    data += "<br>"
     data += parser.tableBody(SQL.fetch())
     if DEBUG:
         print data
