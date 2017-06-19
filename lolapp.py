@@ -104,7 +104,7 @@ def date_matchs(date, order, offset = 1):
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
-    return render_template("date.html", date_name=date, data=data, offset = offset)
+    return render_template("date.html", date_name=date,order=order, data=data, offset = offset)
 
 
 @application.route("/team/<name>")
