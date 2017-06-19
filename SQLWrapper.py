@@ -130,6 +130,54 @@ class SQLWrapper:
             print "Can't execute query"
 
 
+    def queryTeamYear(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT winstable.year AS year, wins, totalgames, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT team, year, COUNT(team) AS wins FROM lol.lolcito WHERE team = (%s) AND resultado = true GROUP BY (team, year)) winstable, (SELECT team, year, COUNT(team) AS totalgames FROM lol.lolcito WHERE team = (%s) GROUP BY (team, year)) totaltable WHERE winstable.year = totaltable.year ORDER BY year ASC", (data, data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
+    def queryTeamSeason(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT winstable.season AS season, wins, totalgames, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT season, COUNT(*) AS wins FROM lol.leagueoflegends WHERE (blueteamtag = (%s) AND bresult = true) OR (redteamtag = (%s) AND rresult = true) GROUP BY (season)) winstable, (SELECT season, COUNT(*) AS totalgames FROM lol.leagueoflegends WHERE blueteamtag = (%s) OR redteamtag = (%s) GROUP BY (season)) totaltable WHERE winstable.season = totaltable.season ORDER BY season ASC", (data, data, data, data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+    
+    def queryTeamInvocadores(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT invocador FROM lol.lolcito WHERE team = (%s) GROUP BY(invocador)", (data,))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
+    def queryTeamChampionByYear(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute("SELECT campeon, year, COUNT(*) AS conteo FROM lol.lolcito WHERE team = (%s) GROUP BY (campeon, year)  ORDER BY year DESC, conteo DESC", (data,))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
     def queryChampionYear(self, data):
         try:
             try:
@@ -139,6 +187,21 @@ class SQLWrapper:
             self.cur.execute(
                 "select foo.year,foo.wins,bar.total, round((CAST(foo.wins AS NUMERIC )*100 / bar.total),2) as winrate from (select year,count(year) as wins from lol.leagueoflegends  where ((%s) in (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp) and rresult is true) or ((%s) in (bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) and bresult is true) group by year) foo, (select year,count(year) as total from lol.leagueoflegends  where (%s) in (redtopchamp,redjunglechamp,redmiddlechamp,redadcchamp,redsupportchamp,bluetopchamp,bluejunglechamp,bluemiddlechamp,blueadcchamp,bluesupportchamp) group by (year) ) bar where foo.year = bar.year;",
                 (data, data, data))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
+    def queryTeamVersus(self, team1, team2, year, season, order):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            if order == "DESC":
+                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year DESC",(team1,team2,season,year,team2,team1,season,year))
+            else:
+                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year ASC",(team1,team2,season,year,team2,team1,season,year))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)

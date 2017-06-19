@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from parser import Parser
 from SQLWrapper import SQLWrapper
 
-DEBUG = True
+DEBUG = False
 parser = Parser()
 SQL = SQLWrapper()
 application = Flask(__name__)
@@ -50,6 +50,22 @@ def player_page():
 def champion_page():
     return render_template("champion_search.html")
 
+@application.route("/team")
+def team_page():
+    return render_template("team_search.html")
+
+@application.route("/game")
+def game_page():
+    return render_template("game_search.html")
+
+@application.route("/game/<team1>/<team2>/<season>/<year>/<order>")
+def game_matchs(team1=None, team2=None, year=None, season=None, order=None):
+    order = order.upper()
+    SQL.queryTeamVersus(team1, team2, year, season, order)
+    data = parser.tableheader(SQL.colnames)
+    data += parser.tableBody(SQL.fetch())
+    return render_template("game.html", team1=team1, team2=team2, year=year, season=season, order=order, data=data)
+
 
 @application.route("/champion/<name>")
 def champion_match(name):
@@ -67,7 +83,6 @@ def champion_match(name):
         print str(SQL.colnames)
     # data += parser.tableBody(SQL.fetch())
     return render_template("champion.html", titulo=name, data=data)
-
 
 @application.route("/season/<season>/<order>")
 def season_matchs(season, order):
@@ -91,6 +106,30 @@ def date_matchs(date, order):
     data += parser.tableBody(SQL.fetch())
     return render_template("date.html", date_name=date, data=data)
 
+
+@application.route("/team/<name>")
+def team_matchs(name):
+    SQL.queryTeamInvocadores(name)
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+
+    SQL.queryTeamSeason(name)
+    data2 = parser.tableheader(SQL.colnames)
+    data2 += "<br>"
+    data2 += parser.tableBody(SQL.fetch())
+
+    SQL.queryTeamYear(name)
+    data3 = parser.tableheader(SQL.colnames)
+    data3 += "<br>"
+    data3 += parser.tableBody(SQL.fetch())
+
+    SQL.queryTeamChampionByYear(name)
+    data4 = parser.tableheader(SQL.colnames)
+    data4 += "<br>"
+    data4 += parser.tableBody(SQL.fetch())
+
+    return render_template("team.html", team_name=name, data=data, data2=data2, data3=data3, data4=data4)
 
 @application.route("/player/<name>")
 def player1_matchs(name):
@@ -146,3 +185,16 @@ def handle_date():
         print order
     return redirect(url_for("date_matchs", date=date, order=order))
 
+@application.route("/handle_team", methods=["POST"])
+def handle_team():
+    name = str(request.form['teamName']).strip().upper()
+    return redirect(url_for("team_matchs", name=name))
+
+@application.route("/handle_game", methods=["POST"])
+def handle_game():
+    team1 = str(request.form['team1'])
+    team2 = str(request.form['team2'])
+    date = str(request.form['dateGetter'])
+    order = str(request.form['orderGetter'])
+    season = str(request.form['seasonGetter'])
+    return redirect(url_for("game_matchs", team1=team1, team2=team2, year=date, season=season, order=order))
