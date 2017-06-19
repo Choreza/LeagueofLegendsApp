@@ -83,18 +83,19 @@ def champion_match(name):
     data += "<br>"
     SQL.queryChampionYear(name)
     data += parser.parseChampionQuery("Winrate por Año", SQL.colnames, SQL.fetch())
+    
     SQL.queryChampionBan(name)
-    data += "<br>"
-    data += "<h2>Historial de baneos</h2>"
-    data += "<hr>"
-    data += parser.tableheader(SQL.colnames)
-    data += "<br>"
-    data += parser.tableBody(SQL.fetch())
+    data2 = "<br>"
+    data2 += "<h2>Historial de baneos</h2>"
+    data2 += "<hr>"
+    data2 += parser.tableheader(SQL.colnames)
+    data2 += "<br>"
+    data2 += parser.tableBody(SQL.fetch())
     if DEBUG:
         print data
         print str(SQL.colnames)
     # data += parser.tableBody(SQL.fetch())
-    return render_template("champion.html", titulo=name, data=data)
+    return render_template("champion.html", titulo=name, data=data, data2=data2)
 
 @application.route("/season/<season>/<order>")
 def season_matchs(season, order):
