@@ -136,7 +136,7 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT winstable.year AS year, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT team, year, COUNT(team) AS wins FROM lol.lolcito WHERE team = (%s) AND resultado = true GROUP BY (team, year)) winstable, (SELECT team, year, COUNT(team) AS totalgames FROM lol.lolcito WHERE team = (%s) GROUP BY (team, year)) totaltable WHERE winstable.year = totaltable.year", (data, data))
+            self.cur.execute("SELECT winstable.year AS year, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT team, year, COUNT(team) AS wins FROM lol.lolcito WHERE team = (%s) AND resultado = true GROUP BY (team, year)) winstable, (SELECT team, year, COUNT(team) AS totalgames FROM lol.lolcito WHERE team = (%s) GROUP BY (team, year)) totaltable WHERE winstable.year = totaltable.year ORDER BY year ASC", (data, data))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
@@ -148,7 +148,7 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT winstable.season AS season, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT season, COUNT(*) AS wins FROM lol.leagueoflegends WHERE (blueteamtag = (%s) AND bresult = true) OR (redteamtag = (%s) AND rresult = true) GROUP BY (season)) winstable, (SELECT season, COUNT(*) AS totalgames FROM lol.leagueoflegends WHERE blueteamtag = (%s) OR redteamtag = (%s) GROUP BY (season)) totaltable WHERE winstable.season = totaltable.season", (data, data, data, data))
+            self.cur.execute("SELECT winstable.season AS season, ROUND(CAST(wins AS NUMERIC)*100/totalgames,2) AS winrate FROM (SELECT season, COUNT(*) AS wins FROM lol.leagueoflegends WHERE (blueteamtag = (%s) AND bresult = true) OR (redteamtag = (%s) AND rresult = true) GROUP BY (season)) winstable, (SELECT season, COUNT(*) AS totalgames FROM lol.leagueoflegends WHERE blueteamtag = (%s) OR redteamtag = (%s) GROUP BY (season)) totaltable WHERE winstable.season = totaltable.season ORDER BY season ASC", (data, data, data, data))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
@@ -172,7 +172,7 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT campeon, year, COUNT(*) AS conteo FROM lol.lolcito WHERE team = (%s) GROUP BY (campeon, year)", (data,))
+            self.cur.execute("SELECT campeon, year, COUNT(*) AS conteo FROM lol.lolcito WHERE team = (%s) GROUP BY (campeon, year) ORDER BY conteo DESC", (data,))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
