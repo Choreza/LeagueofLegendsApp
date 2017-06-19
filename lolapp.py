@@ -99,6 +99,17 @@ def date_matchs(date, order):
     return render_template("date.html", date_name=date, data=data)
 
 
+@application.route("/team/<name>")
+def team_matchs(name):
+    SQL.queryTeamYear(name)
+
+    data = parser.tableheader(SQL.colnames)
+    data += "<br>"
+    data += parser.tableBody(SQL.fetch())
+
+    if DEBUG:
+        return data
+
 @application.route("/player/<name>")
 def player1_matchs(name):
     SQL.queryMatchByPlayer1(name)

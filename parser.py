@@ -50,3 +50,19 @@ class Parser:
         table = self.ul(table)
         data += table
         return data
+
+    def parseTeamQuery(self, title, colnames, rows):
+        data = self.h2(title.decode("utf-8"))
+        data += "<hr>"
+        table = ""
+        for row in rows:
+            nametime = str(row[0])+"<br>"
+            lista = ""
+            for i in range(1,len(row)):
+                items=self.b(colnames[i]+": ") + str(row[i])
+                lista+=self.li(items)
+            lista = self.li(nametime + self.ul(lista) )
+            table += lista
+        table = self.ul(table)
+        data += table
+        return data
