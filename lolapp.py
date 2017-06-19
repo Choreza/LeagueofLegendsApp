@@ -121,7 +121,7 @@ def team_matchs(name):
     data4 += "<br>"
     data4 += parser.tableBody(SQL.fetch())
 
-    return render_template("team.html", team_name=name, data=data, data1=data1, data2=data2, data3=data3)
+    return render_template("team.html", team_name=name, data=data, data2=data2, data3=data3, data4=data4)
 
 @application.route("/player/<name>")
 def player1_matchs(name):
@@ -179,5 +179,5 @@ def handle_date():
 
 @application.route("/handle_team,", methods=["POST"])
 def handle_team():
-    name = str(request.form['teamName']).strip().lower().capitalize()
+    name = str(request.form['teamName']).strip().upper()
     return redirect(url_for("team_matchs", name=name))
