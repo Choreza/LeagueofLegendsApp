@@ -78,7 +78,7 @@
                 </form>
             </div>
         </div>
-        <h2>Resultados para {{ team1 }} VS {{team2}}, temprada {{season}}, {{year}}</h2>
+        <h2>Resultados para {{ team1 }} VS {{team2}}</h2>
         <hr>
         <div class="row">
             <div class="col-sm-12">
@@ -89,9 +89,9 @@
         </div>
         <ul class="pager">
             {% if offset|int > 1 %}
-                <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, year=year, season=season, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+                <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, order=order, offset = offset|int - 1) }}>Anterior</a></li>
             {% endif %}
-            <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, year=year, season=season, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
+            <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
         </ul>
     </div><!-- /container -->
     <!-- +++++ Footer Section +++++ -->
