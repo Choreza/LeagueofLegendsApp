@@ -64,7 +64,7 @@ def game_page():
     return render_template("game_search.html")
 
 @application.route("/game/<team1>/team<2>/<season>/<year>/<order>")
-def game_matchs(team1, team2, year, season, order):
+def game_matchs(team1=None, team2=None, year=None, season=None, order=None):
     order = order.upper()
     SQL.queryTeamVersus(team1, team2, year, season, order)
     data = parser.tableheader(SQL.colnames)
