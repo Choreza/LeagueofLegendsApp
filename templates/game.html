@@ -143,10 +143,10 @@
 
         </div>
         <ul class="pager">
-            {% if int(page) != 1 %}
+            {% if page|int > 1 %}
                 <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, year=year, season=season, order=order, page = int(page) - 1) }}>Anterior</a></li>
             {% endif %}
-            <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, year=year, season=season, order=order, page = int(page) + 1) }}>Siguiente</a></li>
+            <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, year=year, season=season, order=order, page = page|int + 1) }}>Siguiente</a></li>
         </ul>
     </div>
 
