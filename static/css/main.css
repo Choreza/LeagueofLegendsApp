@@ -147,15 +147,13 @@ a:after {
 
 
 /* +++++ WRAP SECTIONS +++++ */
-#ff{
+#fff{
 	background-color: #ffffff;
-}
-
-#qs{
 	font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: #000000;
+    color: #000000
 }
+
 #ww {
 	padding-top: 70px;
 	padding-bottom: 70px;
