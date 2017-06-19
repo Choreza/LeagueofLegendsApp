@@ -192,7 +192,7 @@ def handle_team():
 
 @application.route("/handle_game", methods=["POST"])
 def handle_game():
-    team1 = str(request.form['team1'])
-    team2 = str(request.form['team2'])
+    team1 = str(request.form['team1']).strip()
+    team2 = str(request.form['team2']).strip()
     order = str(request.form['orderGetter'])
     return redirect(url_for("game_matchs", team1=team1, team2=team2, order=order, offset = 1 ))
