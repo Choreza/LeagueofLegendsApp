@@ -58,10 +58,13 @@ def team_page():
 def game_page():
     return render_template("game_search.html")
 
-@application.route("/game/<team1>/<team2>/<season>/<year>/<order>")
-def game_matchs(team1=None, team2=None, year=None, season=None, order=None):
+@application.route("/game/<team1>/<team2>/<season>/<year>/<order>/<offset>")
+def game_matchs(team1=None, team2=None, year=None, season=None, order=None, offset = 0):
     order = order.upper()
-    SQL.queryTeamVersus(team1, team2, year, season, order)
+    if(offset == 0):
+        SQL.queryTeamVersus(team1, team2, year, season, order)
+    else:
+        SQL.queryTeamVersus(team1, team2, year, season, order,offset-1)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
     return render_template("game.html", team1=team1, team2=team2, year=year, season=season, order=order, data=data)

@@ -192,16 +192,16 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-    def queryTeamVersus(self, team1, team2, year, season, order):
+    def queryTeamVersus(self, team1, team2, year, season, order,offset = 0):
         try:
             try:
                 self.cur.fetchall()
             except:
                 pass
             if order == "DESC":
-                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year DESC",(team1,team2,season,year,team2,team1,season,year))
+                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year DESC LIMIT 100 OFFSET=(%s)",(team1,team2,season,year,team2,team1,season,year,offset*100))
             else:
-                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year ASC",(team1,team2,season,year,team2,team1,season,year))
+                self.cur.execute("SELECT matchHistory AS informacioncompleta, redteamtag AS equiporojo, blueteamtag AS equipoazul, rresult AS resultadoequiporojo, bresult AS resultadoequipoazul FROM lol.leagueoflegends WHERE (blueteamtag=(%s) AND redteamtag=(%s) AND SEASON =(%s) AND YEAR=(%s)) OR (blueteamtag=(%s) AND redteamtag=(%s) AND season =(%s) AND year=(%s)) ORDER BY year ASC LIMIT 100 OFFSET=(%s)",(team1,team2,season,year,team2,team1,season,year,offset*100))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)

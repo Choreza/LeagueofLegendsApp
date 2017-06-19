@@ -7,6 +7,9 @@ class Parser:
             return "<" + tag + ">" + text + "</" + tag + ">"
         return func
 
+    def __linkGenerator(self,url,text):
+        return '<a href="'+url+'">'+text+'</a>'
+
     def __init__(self):
         self.thead = self.__tagGenerator("thead")
         self.tbody = self.__tagGenerator("tbody")
@@ -50,3 +53,4 @@ class Parser:
         table = self.ul(table)
         data += table
         return data
+
