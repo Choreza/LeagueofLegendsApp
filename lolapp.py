@@ -179,5 +179,5 @@ def handle_date():
 
 @application.route("/handle_team,", methods=["POST"])
 def handle_team():
-    team = str(request.form['teamName']).strip().lower().capitalize()
+    name = str(request.form['teamName']).strip().lower().capitalize()
     return redirect(url_for("team_matchs", name=name))
