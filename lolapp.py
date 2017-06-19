@@ -64,7 +64,7 @@ def game_matchs(team1=None, team2=None, year=None, season=None, order=None, offs
     if(offset == 0):
         SQL.queryTeamVersus(team1, team2, year, season, order)
     else:
-        SQL.queryTeamVersus(team1, team2, year, season, order,offset-1)
+        SQL.queryTeamVersus(team1, team2, year, season, order,int(offset)-1)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
     return render_template("game.html", team1=team1, team2=team2, year=year, season=season, order=order, data=data, page=offset)
