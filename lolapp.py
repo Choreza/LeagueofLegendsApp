@@ -159,7 +159,7 @@ def handle_season():
     if DEBUG:
         print season
         print order
-    return redirect(url_for("season_matchs", season=season, order=order))
+    return redirect(url_for("season_matchs", season=season, order=order, offset = 1))
 
 
 @application.route("/handle_champion", methods=['POST'])
