@@ -120,10 +120,17 @@
             </div>
         </div>
         <ul class="pager">
-            {% if offset|int > 1 %}
-                <li><a href={{ url_for("date_matchs",date = date_name, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+            {% if date|string() != "" %}
+                {% if offset|int > 1 %}
+                    <li><a href={{ url_for("date_matchs",date = date_name, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+                {% endif %}
+                <li><a href={{ url_for("date_matchs",date = date_name, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
+            {% else %}
+                {% if offset|int > 1 %}
+                    <li><a href={{ url_for("season_matchs",season=season, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+                {% endif %}
+                <li><a href={{ url_for("season_matchs",season=season, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
             {% endif %}
-            <li><a href={{ url_for("date_matchs",date = date_name, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
         </ul>
     </div><!-- /container -->
 
