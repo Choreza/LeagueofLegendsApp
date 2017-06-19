@@ -101,14 +101,27 @@ def date_matchs(date, order):
 
 @application.route("/team/<name>")
 def team_matchs(name):
-    SQL.queryTeamYear(name)
-
+    SQL.queryTeamInvocadores(name)
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
 
-    if DEBUG:
-        return data
+    SQL.queryTeamSeason(name)
+    data2 = parser.tableheader(SQL.colnames)
+    data2 += "<br>"
+    data2 += parser.tableBody(SQL.fetch())
+
+    SQL.queryTeamYear(name)
+    data3 = parser.tableheader(SQL.colnames)
+    data3 += "<br>"
+    data3 += parser.tableBody(SQL.fetch())
+
+    SQL.queryTeamChampionByYear(name)
+    data4 = parser.tableheader(SQL.colnames)
+    data4 += "<br>"
+    data4 += parser.tableBody(SQL.fetch())
+
+    return render_template("team.html", team_name=name, data=data, data1=data1, data2=data2, data3=data3)
 
 @application.route("/player/<name>")
 def player1_matchs(name):
