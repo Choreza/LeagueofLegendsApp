@@ -50,7 +50,8 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-    def queryMatchBySeason(self, season, order="ASC"):
+    def queryMatchBySeason(self, season, order="ASC", offset = 1):
+        offset = int(offset)-1
         try:
             try:
                 self.cur.fetchall()
@@ -58,18 +59,19 @@ class SQLWrapper:
                 pass
             if order == "DESC":
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año DESC",
-                (season, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año DESC LIMIT 100 OFFSET (%s)",
+                (season,offset*100 ))
             else:
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año ASC",
-                (season, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año ASC LIMIT 100 OFFSET (%s)",
+                (season,offset*100 ))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
             print "Can't execute query"
 
-    def queryMatchByDate(self, date, order="ASC"):
+    def queryMatchByDate(self, date, order="ASC",offset = 1):
+        offset = int(offset)-1
         try:
             try:
                 self.cur.fetchall()
@@ -77,12 +79,12 @@ class SQLWrapper:
                 pass
             if order == "DESC":
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada DESC",
-                (date, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada DESC LIMIT 100 OFFSET (%s)",
+                (date, offset*100))
             else:
                  self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada ASC",
-                (date, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada ASC LIMIT 100 OFFSET (%s)",
+                (date, offset*100))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)

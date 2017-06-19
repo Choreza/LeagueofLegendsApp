@@ -119,6 +119,12 @@
                 </table>
             </div>
         </div>
+        <ul class="pager">
+            {% if offset|int > 1 %}
+                <li><a href={{ url_for("date_matchs",date_name = date_name, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+            {% endif %}
+            <li><a href={{ url_for("date_matchs",date_name = date_name, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
+        </ul>
     </div><!-- /container -->
 
     
