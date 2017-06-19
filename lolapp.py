@@ -55,6 +55,9 @@ def player_page():
 def champion_page():
     return render_template("champion_search.html")
 
+@application.route("/team")
+def team_page():
+    return render_template("team_search.html")
 
 @application.route("/champion/<name>")
 def champion_match(name):
@@ -72,7 +75,6 @@ def champion_match(name):
         print str(SQL.colnames)
     # data += parser.tableBody(SQL.fetch())
     return render_template("champion.html", titulo=name, data=data)
-
 
 @application.route("/season/<season>/<order>")
 def season_matchs(season, order):
