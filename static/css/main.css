@@ -151,15 +151,9 @@ a:after {
 	background-color: #ffffff;
 	font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: #000000
+    color: #000000;
 }
-#qs{
-	background-color: #ffffff;
-	font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #000000
-    font-size: 250%;
-}
+
 }
 #ww {
 	padding-top: 70px;
@@ -174,7 +168,9 @@ a:after {
 	font-size: 28px;
     font-family: "Montserrat";
 }
-
+#quienes{
+	font-size: 250%;
+}
 
 #footer {
 	background-color: #2f2f2f;
