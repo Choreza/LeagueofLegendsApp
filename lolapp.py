@@ -58,13 +58,13 @@ def team_page():
 def game_page():
     return render_template("game_search.html")
 
-@application.route("/game/<team1>/<team2>/<season>/<year>/<order>/<offset>")
-def game_matchs(team1=None, team2=None, year=None, season=None, order=None, offset = 1):
+@application.route("/game/<team1>/<team2>/<order>/<offset>")
+def game_matchs(team1=None, team2=None, order=None, offset = 1):
     order = order.upper()
-    SQL.queryTeamVersus(team1, team2, year, season, order,int(offset)-1)
+    SQL.queryTeamVersus(team1, team2, order,int(offset)-1)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
-    return render_template("game.html", team1=team1, team2=team2, year=year, season=season, order=order, data=data, offset=offset)
+    return render_template("game.html", team1=team1, team2=team2, order=order, data=data, offset=offset)
 
 
 @application.route("/champion/<name>")
@@ -194,7 +194,5 @@ def handle_team():
 def handle_game():
     team1 = str(request.form['team1'])
     team2 = str(request.form['team2'])
-    date = str(request.form['dateGetter'])
     order = str(request.form['orderGetter'])
-    season = str(request.form['seasonGetter'])
-    return redirect(url_for("game_matchs", team1=team1, team2=team2, year=date, season=season, order=order, offset = 1 ))
+    return redirect(url_for("game_matchs", team1=team1, team2=team2, order=order, offset = 1 ))
