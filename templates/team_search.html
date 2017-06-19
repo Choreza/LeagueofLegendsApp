@@ -58,11 +58,11 @@
 				<a class="zoom green" href={{ url_for("team_page") }}><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/equipo.png')}}" alt="" /></a>
             </div>
             <div class="col-sm-8">
-                <h2>Búsqueda por Invocador</h2>
+                <h2>Búsqueda por Team</h2>
                 <form class = "form-inline" method = "post" action = {{ url_for("handle_team") }}>
                     <label>Pon el team: </label>
                     <div class="form-group">
-                        <input class = "form-control" type="text" name="playerName" placeholder="Input text">
+                        <input class = "form-control" type="text" name="teamName" placeholder="Input text">
                     </div>
                     <div class="form-group">
                         <button type="submit" class = "btn btn-default">Submit</button>

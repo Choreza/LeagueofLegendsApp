@@ -164,3 +164,7 @@ def handle_date():
         print order
     return redirect(url_for("date_matchs", date=date, order=order))
 
+@application.route("/handle_team,", methods=["POST"])
+def handle_team():
+    team = str(request.form['teamName']).strip().lower().capitalize()
+    return redirect(url_for("team_matchs", name=name))
