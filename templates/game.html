@@ -66,28 +66,6 @@
                         <input class = "form-control" type="text" name="team2" placeholder="Team 2">
                     </div>
                     <div class="form-group">
-                        <label for="sel1">Selecciona Fecha:</label>
-                        <select class="form-control" id="sel1" name="dateGetter">
-                            <option>2014</option>
-                            <option>2015</option>
-                            <option>2016</option>
-                            <option>2017</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sel1">Selecciona Temporada:</label>
-                        <select class="form-control" id="sel1" name="seasonGetter">
-                            <option>Summer_Season</option>
-                            <option>Spring_Season</option>
-                            <option>Winter_Season</option>
-                            <option>Summer_Playoffs</option>
-                            <option>Spring_Playoffs</option>
-                            <option>Winter_Playoffs</option>
-                            <option>International</option>
-                            <option>Regional</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label>Selecciona orden:</label>
                         <select class="form-control" id="sel1" name="orderGetter">
                             <option>ASC</option>
@@ -100,7 +78,7 @@
                 </form>
             </div>
         </div>
-        <h2>Resultados para {{ team1 }} VS {{team2}}, temprada {{season}}, {{year}}</h2>
+        <h2>Resultados para {{ team1 }} VS {{team2}}</h2>
         <hr>
         <div class="row">
             <div class="col-sm-12">
@@ -109,6 +87,12 @@
                 </table>
             </div>
         </div>
+        <ul class="pager">
+            {% if offset|int > 1 %}
+                <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+            {% endif %}
+            <li><a href={{ url_for("game_matchs",team1=team1, team2=team2, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
+        </ul>
     </div><!-- /container -->
     <!-- +++++ Footer Section +++++ -->
 
