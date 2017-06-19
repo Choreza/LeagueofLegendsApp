@@ -61,7 +61,7 @@ def game_page():
 @application.route("/game/<team1>/<team2>/<season>/<year>/<order>/<offset>")
 def game_matchs(team1=None, team2=None, year=None, season=None, order=None, offset = 0):
     order = order.upper()
-    if(offset == 0):
+    if(int(offset) == 0):
         SQL.queryTeamVersus(team1, team2, year, season, order)
     else:
         SQL.queryTeamVersus(team1, team2, year, season, order,int(offset)-1)
