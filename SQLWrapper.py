@@ -172,7 +172,7 @@ class SQLWrapper:
                 self.cur.fetchall()
             except:
                 pass
-            self.cur.execute("SELECT campeon, year, COUNT(*) AS conteo FROM lol.lolcito WHERE team = (%s) GROUP BY (campeon, year) ORDER BY conteo, year DESC", (data,))
+            self.cur.execute("SELECT campeon, year, COUNT(*) AS conteo FROM lol.lolcito WHERE team = (%s) GROUP BY (campeon, year) ORDER BY conteo DESC", (data,))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
