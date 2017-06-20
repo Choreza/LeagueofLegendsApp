@@ -157,7 +157,7 @@ def player1_matchs(name):
     data3 += "<br>"
     data3 += parser.tableBody(SQL.fetch())
 
-    SQL.queryMatchByPlayer4(name)
+    SQL.queryMatchByPlayer4(name.lower())
     data4 = parser.tableheader(SQL.colnames)
     data4 += "<br>"
     data4 += parser.tableBody(SQL.fetch())
