@@ -64,7 +64,8 @@ def game_matchs(team1=None, team2=None, order=None, offset = 1):
     SQL.queryTeamVersus(team1, team2, order,int(offset)-1)
     data = parser.tableheader(SQL.colnames)
     data += parser.tableBody(SQL.fetch())
-    return render_template("game.html", team1=team1, team2=team2, order=order, data=data, offset=offset)
+    gameArray = [['Team1', 5],['Team2', 3]]
+    return render_template("game.html", team1=team1, team2=team2, order=order, data=data, offset=offset,gameArray=gameArray)
 
 
 @application.route("/champion/<name>")

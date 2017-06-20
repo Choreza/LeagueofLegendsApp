@@ -205,6 +205,18 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
+    def queryTeamVersusCount(self, team1, team2):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute(" SELECT redteamtag, blueteamtag, bresult, rresult FROM lol.leagueoflegends WHERE (redteamtag = (%s) AND blueteamtag = (%s)) OR (redteamtag = (%s) AND blueteamtag = (%s))",(team1,team2,team2,team1))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
     def queryChampionBan(self, name):
         try:
             try:
