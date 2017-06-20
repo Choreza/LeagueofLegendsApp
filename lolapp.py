@@ -102,7 +102,7 @@ def season_matchs(season, order, offset = 1):
     data += "<br>"
 
     data += parser.tableBody(SQL.fetch())
-    return render_template("date.html", date_name=season,season = season, data=data, offset = offset)
+    return render_template("date.html", date_name=season,order=order,season = season, data=data, offset = offset)
 
 
 @application.route("/date/<date>/<order>/<offset>")
