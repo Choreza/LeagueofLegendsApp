@@ -16,25 +16,7 @@ class SQLWrapper:
             print "I am unable to connect to the database"
             raise
 
-    def query1(self, data):
-        try:
-            try:
-                self.cur.fetchall()
-            except:
-                pass
-            # self.cur.execute("SELECT COUNT(*) from lol.deathvalues WHERE victim LIKE (%s)",("%"+data+"%",))
-            # self.numpages = (self.cur.fetchone()[0])/100 + 1
-            self.cur.execute("SELECT * from lol.deathvalues WHERE victim LIKE (%s)", ("%" + data + "%",))
-            self.colnames = [desc[0] for desc in self.cur.description]
-            try:
-                assert isinstance(self.cur.rowcount, int)
-            except:
-                print "cago rowcount"
-            self.numpages = self.cur.rowcount
-            print "rows: " + str(self.numpages)
-        except Exception, e:
-            print str(e)
-            print "Can't execute query"
+
 
     def queryChampionSeason(self, data):
         try:
@@ -50,7 +32,8 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
 
-    def queryMatchBySeason(self, season, order="ASC"):
+    def queryMatchBySeason(self, season, order="ASC", offset = 1):
+        offset = int(offset)-1
         try:
             try:
                 self.cur.fetchall()
@@ -58,18 +41,19 @@ class SQLWrapper:
                 pass
             if order == "DESC":
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año DESC",
-                (season, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año DESC LIMIT 100 OFFSET (%s)",
+                (season,offset*100 ))
             else:
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año ASC",
-                (season, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE season = (%s) ORDER BY año ASC LIMIT 100 OFFSET (%s)",
+                (season,offset*100 ))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
             print "Can't execute query"
 
-    def queryMatchByDate(self, date, order="ASC"):
+    def queryMatchByDate(self, date, order="ASC",offset = 1):
+        offset = int(offset)-1
         try:
             try:
                 self.cur.fetchall()
@@ -77,12 +61,12 @@ class SQLWrapper:
                 pass
             if order == "DESC":
                 self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada DESC",
-                (date, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada DESC LIMIT 100 OFFSET (%s)",
+                (date, offset*100))
             else:
                  self.cur.execute(
-                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada ASC",
-                (date, ))
+                "SELECT blueteamtag AS BlueTeam, redteamtag AS RedTeam, bresult, rresult, TO_CHAR((gamelength || ' minute')::interval, 'HH24:MI') AS Duración, year AS Año, season AS Temporada FROM lol.leagueoflegends WHERE year = (%s) ORDER BY temporada ASC LIMIT 100 OFFSET (%s)",
+                (date, offset*100))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)
@@ -124,6 +108,20 @@ class SQLWrapper:
                 pass
             self.cur.execute(
                 "SELECT DISTINCT(team) FROM lol.lolcito WHERE invocador = (%s)",(data,))
+            self.colnames = [desc[0].capitalize() for desc in self.cur.description]
+        except Exception, e:
+            print str(e)
+            print "Can't execute query"
+
+
+    def queryMatchByPlayer4(self, data):
+        try:
+            try:
+                self.cur.fetchall()
+            except:
+                pass
+            self.cur.execute(
+                "SELECT foo.year,foo.death,bar.kills, ROUND((CAST(foo.death AS numeric)/bar.kills)*100,2) as deathKillRatio from (SELECT B.year,count(A.lvictim) as death FROM lol.deathvalues A,lol.leagueoflegends B where lvictim = (%s) AND A.matchhistory = B.matchhistory GROUP BY(B.year)) foo, (SELECT B.year,count(A.lkiller) as kills FROM lol.deathvalues A,lol.leagueoflegends B where lkiller = (%s) AND A.matchhistory = B.matchhistory GROUP BY(B.year)) bar WHERE foo.year = bar.year ORDER BY foo.year",(data,data))
             self.colnames = [desc[0].capitalize() for desc in self.cur.description]
         except Exception, e:
             print str(e)

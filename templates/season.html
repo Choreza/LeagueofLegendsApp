@@ -95,6 +95,12 @@
                 </table>
             </div>
         </div>
+        <ul class="pager">
+            {% if offset|int > 1 %}
+                <li><a href={{ url_for("season_matchs",season=season, order=order, offset = offset|int - 1) }}>Anterior</a></li>
+            {% endif %}
+            <li><a href={{ url_for("season_matchs",season=season, order=order, offset = offset|int + 1) }}>Siguiente</a></li>
+        </ul>
     </div><!-- /container -->
 	<!-- +++++ Footer Section +++++ -->
 

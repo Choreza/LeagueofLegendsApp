@@ -92,27 +92,27 @@ def champion_match(name):
     # data += parser.tableBody(SQL.fetch())
     return render_template("champion.html", titulo=name, data=data, data2=data2)
 
-@application.route("/season/<season>/<order>")
-def season_matchs(season, order):
+@application.route("/season/<season>/<order>/<offset>")
+def season_matchs(season, order, offset = 1):
     if DEBUG:
         print season + order
-    SQL.queryMatchBySeason(season, order)
+    SQL.queryMatchBySeason(season, order, offset)
 
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
 
     data += parser.tableBody(SQL.fetch())
-    return render_template("date.html", date_name=season, data=data)
+    return render_template("date.html", date_name=season,order=order,season = season, data=data, offset = offset)
 
 
-@application.route("/date/<date>/<order>")
-def date_matchs(date, order):
-    SQL.queryMatchByDate(date, order)
+@application.route("/date/<date>/<order>/<offset>")
+def date_matchs(date, order, offset = 1):
+    SQL.queryMatchByDate(date, order, offset)
 
     data = parser.tableheader(SQL.colnames)
     data += "<br>"
     data += parser.tableBody(SQL.fetch())
-    return render_template("date.html", date_name=date, data=data)
+    return render_template("date.html", date_name=date,order=order, data=data, offset = offset)
 
 
 @application.route("/team/<name>")
@@ -157,7 +157,11 @@ def player1_matchs(name):
     data3 += "<br>"
     data3 += parser.tableBody(SQL.fetch())
 
-    return render_template("player.html",player_name = name, data = data, data2 = data2, data3 = data3)
+    SQL.queryMatchByPlayer4(name.lower())
+    data4 = parser.tableheader(SQL.colnames)
+    data4 += "<br>"
+    data4 += parser.tableBody(SQL.fetch())
+    return render_template("player.html",player_name = name, data = data, data2 = data2, data3 = data3, data4 = data4)
 
 
 @application.route("/handle_season", methods=['POST'])
@@ -167,7 +171,7 @@ def handle_season():
     if DEBUG:
         print season
         print order
-    return redirect(url_for("season_matchs", season=season, order=order))
+    return redirect(url_for("season_matchs", season=season, order=order, offset = 1))
 
 
 @application.route("/handle_champion", methods=['POST'])
@@ -191,7 +195,7 @@ def handle_date():
     if DEBUG:
         print date
         print order
-    return redirect(url_for("date_matchs", date=date, order=order))
+    return redirect(url_for("date_matchs", date=date, order=order, offset = 1))
 
 @application.route("/handle_team", methods=["POST"])
 def handle_team():
