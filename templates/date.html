@@ -58,10 +58,10 @@
               <a class="zoom green" href=#><img class="img-responsive" src="{{url_for('static', filename = 'img/portfolio/season.png')}}" alt="" /></a>
             </div>
             <div class="col-sm-8">
-            <h2>Búsqueda por Fecha</h2>
+            <h2>Búsqueda por Año</h2>
                 <form class = "form-inline" method = "post" action = {{ url_for("handle_date") }}>
                     <div class="form-group">
-                        <label for="sel1">Selecciona Fecha:</label>
+                        <label for="sel1">Selecciona Año:</label>
                         <select class="form-control" id="sel1" name="dateGetter">
                             <option>2014</option>
                             <option>2015</option>
@@ -82,6 +82,7 @@
                 </form>
                 <br>
                 <br>
+                <h2>Búsqueda por Temporada</h2>
                 <form class = "form-inline" method = "post" action = {{ url_for("handle_season") }}>
                     <div class="form-group">
                         <label for="sel1">Selecciona Temporada:</label>
