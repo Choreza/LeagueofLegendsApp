@@ -216,6 +216,17 @@ class SQLWrapper:
         except Exception, e:
             print str(e)
             print "Can't execute query"
+        info = self.cur.fetchall()
+        team1=info[0][0]
+        team2=info[0][1]
+        l2 = [['Team', 'Wins'], [team1, 0], [team2, 0]]
+
+        for i in range(len(info)):
+            if (team1==info[i][0] and info[i][2]) or (team1==info[i][1] and info[i][3]): l2[1][1]+=1
+            if (team2==info[i][0] and info[i][2]) or (team2==info[i][1] and info[i][3]): l2[2][1]+=1
+        return l2
+
+
 
     def queryChampionBan(self, name):
         try:
