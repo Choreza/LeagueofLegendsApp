@@ -217,8 +217,6 @@ class SQLWrapper:
             print str(e)
             print "Can't execute query"
         info = self.cur.fetchall()
-        team1=info[0][0]
-        team2=info[0][1]
         l2 = [['Team', 'Wins'], [team1, 0], [team2, 0]]
 
         for i in range(len(info)):
